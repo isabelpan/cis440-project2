@@ -1,5 +1,4 @@
-
-import {GoogleLogin} from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 
 function Calendar() {
 

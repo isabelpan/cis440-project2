@@ -2,10 +2,13 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    minWidth:{
+      '5': '5rem'
+    },
     extend: {
       fontSize: {
         14: '14px',
-      }},
+      },
       width: {
         400: '400px',
         760: '760px',
@@ -15,12 +18,16 @@ module.exports = {
         1200: '1200px',
         1400: '1400px',
       },
-      height: {
+      borderWidth:{
+        1: '1px',
+      },
+      height:{
         80: '80px',
       },
-      minHeight: {
+      minHeight:{
         590: '590px',
       },
+    },
   },
   plugins: [],
   
