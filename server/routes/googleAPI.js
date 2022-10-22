@@ -9,6 +9,8 @@ const REFRESH_TOKEN = " "
 const oauth2Client = new google.auth.OAuth2(
     GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET,
+    // Might need to change this to localhost:9000
+    // our backend is running on port 9000 and frontend is on 3000
     'http://localhost:3000'
 )
 router.get('/', async (req, res, next) => {
@@ -29,7 +31,7 @@ router.post('/create-event', async (req, res, next) => {
     try {
         const { event, description, location, startDateTime } = req.body
 
-        oauth2Client.setCredentials(refresh_token: REFRESH_TOKEN)
+        oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
 
         const calendar = google.calendar('v3')
         const response = await calendar.events.insert({

@@ -1,13 +1,13 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
-import router from '../../../server/routes/api.route';
+import axios from 'axios';
 
 function Calendar() {
 
     const responseGoogle = (response) => {
         console.log(response)
         const { code } = response
+        console.log('creating tokens')
         axios
             .post('/api/create-tokens', { code })
             .then(response => {
@@ -49,7 +49,6 @@ function Calendar() {
                     buttonText='Sign in to authorize the calendar'
                     onSuccess={responseGoogle}
                     onFailure={responseError}
-                    cookiePolicy={'single-host-origin'}
                     responseType='code'
                     accessType='offline'
                     scope='openid email profile https://www.googleapis.com/auth/calendar'
