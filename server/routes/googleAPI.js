@@ -4,6 +4,7 @@ const { google } = require('googleapis');
 const GOOGLE_CLIENT_ID = "357003526122-fnc0n6ua8um1iht4inc2brhu479afina.apps.googleusercontent.com"
 const GOOGLE_CLIENT_SECRET = "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"
 
+// still need to input
 const REFRESH_TOKEN = " "
 
 const oauth2Client = new google.auth.OAuth2(
