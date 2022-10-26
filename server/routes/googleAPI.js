@@ -19,6 +19,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/create-tokens', async (req, res, next) => {
+    console.log('creating token in api')
     try {
         const { code } = req.body
         const { tokens } = await oauth2Client.getToken(code)
@@ -26,7 +27,12 @@ router.post('/create-tokens', async (req, res, next) => {
     } catch (error) {
         next(error);
     }
-})
+});
+
+router.get("/hi", function(req, res, next){
+    res.send('hello');
+
+});
 
 router.post('/create-event', async (req, res, next) => {
     try {
@@ -52,6 +58,6 @@ router.post('/create-event', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-})
+});
 
 module.exports = router;
