@@ -53,8 +53,10 @@ function getUserInfo(token){
     })
     }
 
+    // after a users first sign in, we need to ask if they are a mentor or mentee and append that into the gInfo object
     async function logIn(gInfo){
         var email = gInfo.email
+        // temp varible for isMentor
         var isMentor = 0
 
         switch (isMentor){
@@ -65,15 +67,21 @@ function getUserInfo(token){
                 var isMentorString = 'menteeName'
         }
 
-        var dbUserLen = await getUser(email)
+        var dbUser = await getUser(email)
+        console.log(dbUser)
+        var dbUserLen = dbUser.length
+        console.log(dbUserLen)
 
-        if (dbUserLen = 0){
-            // create account
-        }
-        else{
+        if (dbUserLen === 0){
+            console.log('creating account')
             let dashboardStatus = await createDashboard(gInfo.name, isMentorString)
             console.log(dashboardStatus)
             let userStatus = await createUser(gInfo, isMentor)
+            console.log(userStatus)
+        }
+        else{
+            console.log('logging in')
+
         }
     }
     
