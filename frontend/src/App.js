@@ -1,7 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Calendar from './components/calendar';
+import { Sidebar, Navbar } from './components';
+import { Dashboard, Login } from './pages';
+// import Calendar from './components';
 
 function App() {
 
@@ -23,8 +26,8 @@ function App() {
 
   return (
     
-    <div className="App">
-      <header className="App-header">
+    <div>
+      {/* <header className="App-header">
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -38,7 +41,30 @@ function App() {
           Learn React
         </a>
         <Calendar/>
-      </header>
+      </header> */}
+
+      <div>
+        <BrowserRouter>
+          <div></div>
+          <Navbar />
+
+
+          <div className ='w-15 fixed sidebar dark:bg-secondary-dark-bg bg-white'>
+            <Sidebar />
+          </div>
+          
+          <div>
+            
+            <Routes>
+              <Route path='/' element={<Dashboard />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+
+              <Route path='/login' element={<Login />} />
+              
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </div>
       
     </div>
   );
