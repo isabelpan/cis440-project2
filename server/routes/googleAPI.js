@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const { google } = require('googleapis');
 const request = require('request')
+const {getUser, createDashboard, createUser} = require('../database')
 
 const GOOGLE_CLIENT_ID = "357003526122-fnc0n6ua8um1iht4inc2brhu479afina.apps.googleusercontent.com"
 const GOOGLE_CLIENT_SECRET = "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"
+var userInfo = {}
 
 // expires after 7 days, entered 10/25
 const REFRESH_TOKEN = "4/0ARtbsJpq1wTp72Z"
@@ -26,9 +28,8 @@ router.post('/create-tokens', async (req, res, next) => {
     try {
         const { code } = req.body
         const { tokens } = await oauth2Client.getToken(code)
-        // Access token is used for the frontend so you can add it here if you need
         idToken = tokens.id_token
-        console.log(idToken)
+        getUserInfo(idToken)
         res.send(tokens)
     } catch (error) {
         next(error);
@@ -42,10 +43,38 @@ function getUserInfo(token){
     request.get({
         url: url,
         json: true
-    }, (error, response) => {
-        console.log(response.body)
+    }, async (error, response) => {
+        if(error){
+            throw error
+        }
+        userInfo = response.body
+
+        logIn(userInfo)
     })
-        
+    }
+
+    async function logIn(gInfo){
+        var email = gInfo.email
+        var isMentor = 0
+
+        switch (isMentor){
+            case 0:
+                var isMentorString = 'mentorName';
+                break
+            case 1:
+                var isMentorString = 'menteeName'
+        }
+
+        var dbUserLen = await getUser(email)
+
+        if (dbUserLen = 0){
+            // create account
+        }
+        else{
+            let dashboardStatus = await createDashboard(gInfo.name, isMentorString)
+            console.log(dashboardStatus)
+            let userStatus = await createUser(gInfo, isMentor)
+        }
     }
     
 
