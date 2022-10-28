@@ -157,6 +157,21 @@ const Register = () => {
                 onChange={(e) => handleChange(e)}
               />
 
+              <label className='text-lg mt-2'>Are you a Mentor or Mentee?</label>
+              <div className='flex flex-row gap-20'>
+                <div className='flex gap-2'>
+                  <label for='mentor'>Mentor</label>
+                  <input type='radio' value='1' id='mentor' name='chooseRole'/>
+                </div>
+                
+                <div className='flex gap-2'>
+                  <label for='mentee'>Mentee</label>
+                  <input type='radio' value='2' id='mentee' name='chooseRole'/>
+                </div>
+                
+              </div>
+  
+
             <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-blue-800 shadow-md'>Register</button>
 
             <div className='mt-5'>
