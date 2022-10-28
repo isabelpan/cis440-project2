@@ -14,7 +14,7 @@ const Sidebar = () => {
     <div className='pl-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-19'>
         <>
         <div className='flex justify-between items-center'>
-            <Link to='/' className='items-center gap-3 ml-1 mt-4 flex text-2xl font-extrabold tracking-tight dark:text-white text-slate-900 pt-4'>
+            <Link to='/' className='items-center gap-3 ml-1 mt-4 flex text-4xl font-extrabold tracking-tight dark:text-white text-slate-900 pt-4'>
                 <GiAbstract119 /> <span>Mellow</span>
             </Link>
 
