@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
-import { GiAbstract119 } from 'react-icons/gi'
+import { GiAbstract119 } from 'react-icons/gi';
 
 import { links } from '../data/SidebarData';
 
@@ -13,8 +13,8 @@ const Sidebar = () => {
   return (
     <div className='pl-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-19'>
         <>
-        <div className='flex justify-between items-center'>
-            <Link to='/' className='items-center gap-3 ml-1 mt-4 flex text-4xl font-extrabold tracking-tight dark:text-white text-slate-900 pt-4'>
+        <div className='flex space-between ml-2'>
+            <Link to='/' className='items-center gap-3 ml-1 mt-3 flex text-center text-4xl font-extrabold tracking-tight dark:text-white text-slate-900 pt-4'>
                 <GiAbstract119 /> <span>Mellow</span>
             </Link>
 
