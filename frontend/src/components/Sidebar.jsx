@@ -17,18 +17,12 @@ const Sidebar = () => {
             <Link to='/' className='items-center gap-3 ml-1 mt-3 flex text-center text-4xl font-extrabold tracking-tight dark:text-white text-slate-900 pt-4'>
                 <GiAbstract119 /> <span>Mellow</span>
             </Link>
-
-            {/* <TooltipComponent content='Menu' position='BottomCenter'> */}
-              {/* <button type='button' className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block '>
-                <MdOutlineCancel />
-              </button> */}
-              {/* </TooltipComponent> */}
         </div>
 
         <div className='mt-10'>
           {links.map((item) => (
             <div key={item.title}>
-              <p className='text-gray-400 m-3 mt-4 uppercase'>
+              <p className='text-gray-500 m-3 mt-4 uppercase'>
                 {item.title}
               </p>
               {item.links.map((link) => (

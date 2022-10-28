@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 
 
+
 const Register = () => {
   const navigate = useNavigate();
 
@@ -21,7 +22,8 @@ const Register = () => {
           username: "",
           email: "",
           password: "",
-          confirmedPass: ""
+          confirmedPass: "",
+          chooseRole: ""
         })
 
 
@@ -160,13 +162,13 @@ const Register = () => {
               <label className='text-lg mt-2'>Are you a Mentor or Mentee?</label>
               <div className='flex flex-row gap-20'>
                 <div className='flex gap-2'>
-                  <label for='mentor'>Mentor</label>
-                  <input type='radio' value='1' id='mentor' name='chooseRole'/>
+                  <label for='mentor' className='hover:cursor-pointer' >Mentor</label>
+                  <input type='radio' value='1' id='mentor' name='chooseRole' className='appearance-none'/>
                 </div>
                 
                 <div className='flex gap-2'>
-                  <label for='mentee'>Mentee</label>
-                  <input type='radio' value='2' id='mentee' name='chooseRole'/>
+                  <label for='mentee' className=' hover:cursor-pointer'>Mentee</label>
+                  <input type='radio' value='2' id='mentee' name='chooseRole' className='appearance-none'/>
                 </div>
                 
               </div>

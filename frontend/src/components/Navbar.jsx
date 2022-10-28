@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink as Link } from 'react-router-dom';
+import { NavLink as Link, useLocation } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 
 
@@ -33,6 +33,7 @@ const LoggedOutContainer = () => {
 
 }
 
+
 const Navbar = () => {
 
   const isLoggedIn = () => {
@@ -48,13 +49,13 @@ const Navbar = () => {
       console.log('User is not logged in.');
       return(false)
     }
-  } // end of isLoggedIn func
+  }; // end of isLoggedIn func
 
   const logoutFunc = () => {
     localStorage.clear('user_info');
   
     window.location.reload();
-  }
+  }; // end of logoutFunc 
 
   const checkLogin = () => {
     if(isLoggedIn()){
@@ -73,12 +74,20 @@ const Navbar = () => {
   }; // end of checkLogin
 
 
+  const GetRoute = () => {
+    const location = useLocation();
+    const currentRoute = location.pathname.substr(1,);
+  
+    return(<h1 className='font-bold pt-2 capitalize'>{currentRoute}</h1>)
+  
+  
+  }
+
   return (
     <div className='flex justify-between flex-row p-5 shadow-md float-right w-85'>
       <Link to='/' className='hover:no-underline'>
         <div className='gap-3 flex items-center no-underline justify-between my-0 mx-2.5 text-3xl cursor-pointer'>
-          {/* <GiAbstract119 /> */}
-          <h1 className='font-bold pt-2'>Dashboard</h1>
+          {GetRoute()}
         </div>
       </Link>
 
