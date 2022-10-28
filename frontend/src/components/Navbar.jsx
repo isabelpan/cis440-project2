@@ -38,7 +38,7 @@ const LoggedInContainer = ({ username, customFunc }) => {
 const LoggedOutContainer = () => {
   return(
     <div className='flex gap-3 items-center justify-between'>
-      <Link to='/register' className='border-2 border-mintgreen rounded-xl mx-2.5 flex text-gold h-16 items-center no-underline px-4 gap-2'>
+      <Link to='/register' className='border-2 rounded-xl mx-2.5 flex h-16 items-center no-underline px-4 gap-2'>
           <span>Register</span>
       </Link>
 

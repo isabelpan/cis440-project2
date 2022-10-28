@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const { google } = require('googleapis');
+const request = require('request')
+const {getUser, createDashboard, createUser} = require('../database')
 
 const GOOGLE_CLIENT_ID = "357003526122-fnc0n6ua8um1iht4inc2brhu479afina.apps.googleusercontent.com"
 const GOOGLE_CLIENT_SECRET = "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"
+var userInfo = {}
 
 // expires after 7 days, entered 10/25
 const REFRESH_TOKEN = "4/0ARtbsJpq1wTp72Z"
@@ -18,15 +21,78 @@ router.get('/', async (req, res, next) => {
     res.send({ message: 'Ok api is working' })
 });
 
+
+
 router.post('/create-tokens', async (req, res, next) => {
+    console.log('creating token in api')
     try {
         const { code } = req.body
         const { tokens } = await oauth2Client.getToken(code)
+        idToken = tokens.id_token
+        getUserInfo(idToken)
         res.send(tokens)
     } catch (error) {
         next(error);
     }
-})
+});
+
+function getUserInfo(token){
+    console.log('getting user info')
+    var url = 'https://oauth2.googleapis.com/tokeninfo?id_token=' + token
+    console.log(url)
+    request.get({
+        url: url,
+        json: true
+    }, async (error, response) => {
+        if(error){
+            throw error
+        }
+        userInfo = response.body
+
+        logIn(userInfo)
+    })
+    }
+
+    // after a users first sign in, we need to ask if they are a mentor or mentee and append that into the gInfo object
+    async function logIn(gInfo){
+        var email = gInfo.email
+        // temp varible for isMentor
+        var isMentor = 0
+
+        switch (isMentor){
+            case 0:
+                var isMentorString = 'mentorName';
+                break
+            case 1:
+                var isMentorString = 'menteeName'
+        }
+
+        var dbUser = await getUser(email)
+        console.log(dbUser)
+        var dbUserLen = dbUser.length
+        console.log(dbUserLen)
+
+        if (dbUserLen === 0){
+            console.log('creating account')
+            let dashboardStatus = await createDashboard(gInfo.name, isMentorString)
+            console.log(dashboardStatus)
+            let userStatus = await createUser(gInfo, isMentor)
+            console.log(userStatus)
+        }
+        else{
+            console.log('logging in')
+
+        }
+    }
+    
+
+
+
+
+
+
+
+
 
 router.post('/create-event', async (req, res, next) => {
     try {
@@ -52,6 +118,6 @@ router.post('/create-event', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
-})
+});
 
 module.exports = router;

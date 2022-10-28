@@ -1,15 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
+import { gapi } from "gapi-script";
+
 
 function Calendar() {
+
+    useEffect(() => {
+        function start() {
+          gapi.client.init({
+            clientId: process.env.REACT_PUBLIC_GOOGLE_CLIENT_ID,
+            scope: '',
+          });
+        }
+    
+        gapi.load('client:auth2', start);
+      }, []);
+    
 
     const responseGoogle = (response) => {
         console.log(response)
         const { code } = response
         console.log('creating tokens')
         axios
-            .post('/api/create-tokens', { code })
+            .post('http://localhost:9000/googleAPI/create-tokens', { code })
             .then(response => {
                 console.log(response.data)
                 setSignedIn(true)
@@ -19,6 +33,7 @@ function Calendar() {
     }
 
     const responseError = (error) => {
+        console.log('error below')
         console.log(error)
     }
 
