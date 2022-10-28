@@ -31,7 +31,7 @@ const App = () => {
       <div>
         <BrowserRouter>
           <div>
-            <Navbar />
+            {/* <Navbar /> */}
           </div>
 
           <div className ='w-15 fixed sidebar bg-white'>

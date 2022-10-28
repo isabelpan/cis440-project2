@@ -116,7 +116,7 @@ const Login = () => {
                 type='text'
                 placeholder='username1234'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
                 onChange={(e) => handleChange(e)}
             />
 
@@ -126,14 +126,14 @@ const Login = () => {
                 type='password'
                 placeholder='●●●●●●●●●●'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
                 onChange={(e) => handleChange(e)}
                 />
 
-            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-2 hover:bg-gray-400 hover:border-gray-400 hover:text-blue-800'>Login</button>
+            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-blue-800 shadow-md'>Login</button>
 
-            <div>
-              <span> Don't have an account? <Link to='/register' className='text-blue-600 hover:text-blue-800'>Register Now!</Link></span>
+            <div className='mt-5'>
+              <span> Don't have an account? <Link to='/register' className='text-blue-600 hover:text-blue-800 font-bold'>Register Now</Link></span>
               
             </div>
           </div>
