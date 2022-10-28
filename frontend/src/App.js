@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Sidebar, Navbar } from './components';
 import { Dashboard, Login, Register, TasksPage, CalendarPage, GoalsPage } from './pages';
 // import Calendar from './components';
 
@@ -25,18 +24,8 @@ const App = () => {
 
 
   return (
-    
-    <div>
-
       <div>
         <BrowserRouter>
-          <div>
-            {/* <Navbar /> */}
-          </div>
-
-          <div className ='w-15 fixed sidebar bg-white'>
-            {/* <Sidebar /> */}
-          </div>
           
           <div>
             <Routes>
@@ -58,8 +47,6 @@ const App = () => {
           </div>
         </BrowserRouter>
       </div>
-      
-    </div>
   );
 }
 
