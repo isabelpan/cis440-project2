@@ -85,11 +85,10 @@ const Navbar = () => {
 
   return (
     <div className='flex justify-between flex-row p-5 shadow-md float-right w-85'>
-      <Link to='/' className='hover:no-underline'>
         <div className='gap-3 flex items-center no-underline justify-between my-0 mx-2.5 text-3xl cursor-pointer'>
           {GetRoute()}
         </div>
-      </Link>
+
 
       {/* <div className='flex flex-col pr-2'>
         <div className='flex pt-2 text-xl gap-2'>

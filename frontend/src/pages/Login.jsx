@@ -94,19 +94,18 @@ const Login = () => {
 
   return (
     <div className='flex w-screen'>
-      <div className='w-1/2 h-screen flex flex-row text-5xl gap-5 justify-center items-center'>
-        <GiAbstract119 className='text-8xl'/>
-        <div>
-          <h1>Welcome to</h1>
-          <h1>Mellow Mentorship</h1>
-
-        </div>
+      <div className='w-1/2 h-screen flex flex-row text-5xl justify-center items-center bg-gradient-to-b from-blue-700 via-purple-500 to-violet-300 text-white gap-5'>
+          <GiAbstract119 className='text-8xl'/>
+          <div>
+            <h1>Welcome to</h1>
+            <h1>Mellow Mentorship</h1>
+          </div>
       </div>
 
-      <div className='w-1/2 flex flex-col bg-gradient-to-b from-blue-600 via-purple-500 to-violet-300 items-center justify-center' >
+      <div className='w-1/2 flex flex-col items-center justify-center' >
         <form onSubmit={(event) => handleSubmit(event)} className='rounded-lg bg-white w-3/4 p-10'>
           <div>
-            <h1 className='font-bold text-3xl mb-8'>Sign In</h1>
+            <h1 className='font-bold text-4xl mb-8'><span className='text-violet-600'>Sign Into</span> Your Account</h1>
           </div>
 
           <div className='flex flex-col gap-3'>
@@ -130,10 +129,10 @@ const Login = () => {
                 onChange={(e) => handleChange(e)}
                 />
 
-            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-blue-800 shadow-md'>Login</button>
+            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-600 shadow-md'>Login</button>
 
             <div className='mt-5'>
-              <span> Don't have an account? <Link to='/register' className='text-blue-600 hover:text-blue-800 font-bold'>Register Now</Link></span>
+              <span> Don't have an account? <Link to='/register' className='text-violet-600 hover:text-violet-900 font-bold'>Register Now</Link></span>
               
             </div>
           </div>

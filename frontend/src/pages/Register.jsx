@@ -103,7 +103,7 @@ const Register = () => {
       }
   return (
     <div className='flex w-screen'>
-      <div className='w-1/2 h-screen flex flex-row text-5xl gap-5 justify-center items-center'>
+      <div className='w-1/2 h-screen flex flex-row text-5xl gap-5 justify-center items-center bg-gradient-to-b from-blue-700 via-purple-500 to-violet-300 text-white'>
         <GiAbstract119 className='text-8xl'/>
         <div>
           <h1>Welcome to</h1>
@@ -112,10 +112,11 @@ const Register = () => {
         </div>
       </div>
 
-      <div className='w-1/2 flex flex-col bg-gradient-to-b from-blue-600 via-purple-500 to-violet-300 items-center justify-center' >
+      <div className='w-1/2 flex flex-col  items-center justify-center' >
         <form onSubmit={(event) => handleSubmit(event)} className='rounded-lg bg-white w-3/4 p-10'>
           <div>
-            <h1 className='font-bold text-4xl mb-8'>Register</h1>
+            <h1 className='font-bold text-4xl mb-8'><span className='text-violet-600'>Register</span> Your Account</h1>
+            
           </div>
 
           <div className='flex flex-col gap-3'>
@@ -162,22 +163,22 @@ const Register = () => {
               <label className='text-lg mt-2'>Are you a Mentor or Mentee?</label>
               <div className='flex flex-row gap-20'>
                 <div className='flex gap-2'>
-                  <label for='mentor' className='hover:cursor-pointer' >Mentor</label>
-                  <input type='radio' value='1' id='mentor' name='chooseRole' className='appearance-none'/>
+                  <label for='mentor' className='hover:cursor-pointer border-2 py-1 px-5 rounded-md' >Mentor</label>
+                  <input type='radio' value='1' id='mentor' name='chooseRole'/>
                 </div>
                 
                 <div className='flex gap-2'>
-                  <label for='mentee' className=' hover:cursor-pointer'>Mentee</label>
-                  <input type='radio' value='2' id='mentee' name='chooseRole' className='appearance-none'/>
+                  <label for='mentee' className=' hover:cursor-pointer border-2 py-1 px-5 rounded-md'>Mentee</label>
+                  <input type='radio' value='2' id='mentee' name='chooseRole'/>
                 </div>
                 
               </div>
   
 
-            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-blue-800 shadow-md'>Register</button>
+            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-900 shadow-md'>Register</button>
 
             <div className='mt-5'>
-              <span>Already have an account? <Link to='/login' className='text-blue-600 hover:text-blue-800 font-bold'>Sign in now</Link></span>
+              <span>Already have an account? <Link to='/login' className='text-violet-600 hover:text-violet-800 font-bold'>Sign in now</Link></span>
               
             </div>
           </div>

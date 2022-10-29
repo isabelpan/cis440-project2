@@ -18,7 +18,6 @@ const Dashboard = () => {
       </div>
 
       <div className='ml-72 pt-36'>
-        <h1>DASHBOARD</h1>
         <Calendar />
       </div>
     </div>

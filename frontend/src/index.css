@@ -14,8 +14,13 @@ code {
     monospace;
 }
 
+
+input[type="radio"]{
+  display: none;
+}
+
 input[type="radio"]:checked+label{
-  color: blue;
+  background-color: blue;
 }
 
 @tailwind base;
