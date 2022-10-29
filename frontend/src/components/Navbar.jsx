@@ -5,15 +5,14 @@ import { FaUserAlt } from 'react-icons/fa';
 
 const LoggedInContainer = ({ username, customFunc }) => {
   return(
-      <div className='flex flex-col pr-2'>
+    <div className='flex flex-col pr-2'>
+      <div className='flex pt-2 text-xl gap-2 text-violet-600'>
+        <FaUserAlt className='mt-1 text-lg'/>
+        <h1 className='font-bold'>{username}</h1>
+      </div>
 
-        <div className='flex pt-2 text-xl gap-2'>
-          <FaUserAlt className='mt-1'/>
-          <h1 className='font-bold '>Welcome back,</h1> <h1>User!</h1>
-        </div>
-
-        <button type='button' className='text-right hover:text-blue-700'>Logout</button>
-      </div> 
+      <button type='button' onClick={customFunc} className='text-right text-gray-400 hover:text-gray-900 ease-out duration-300'>Logout</button>
+  </div> 
   )
 
 }
@@ -21,11 +20,11 @@ const LoggedInContainer = ({ username, customFunc }) => {
 const LoggedOutContainer = () => {
   return(
     <div className='flex items-center justify-between'>
-      <Link to='/login' className='rounded-lg mx-2.5 flex h-11 items-center no-underline px-4 gap-2 hover:text-blue-700'>
+      <Link to='/login' className='rounded-lg mx-2.5 flex h-11 items-center no-underline px-4 gap-2 hover:text-violet-600'>
           <span>Login</span>
       </Link>
 
-      <Link to='/register' className='rounded-lg mx-2.5 flex h-11 items-center no-underline px-4 gap-2 bg-gray-300 text-blue-700 hover:bg-gray-400 hover:text-blue-900 font-bold'>
+      <Link to='/register' className='rounded-lg mx-2.5 flex h-11 items-center no-underline px-4 gap-2 bg-gray-200 text-violet-600 hover:bg-gray-300 hover:text-violet-900 font-bold'>
           <span>Register</span>
       </Link>
     </div>
@@ -90,13 +89,18 @@ const Navbar = () => {
         </div>
 
 
-      {/* <div className='flex flex-col pr-2'>
-        <div className='flex pt-2 text-xl gap-2'>
-          <FaUserAlt className='mt-1'/>
-          <h1 className='font-bold '>Welcome back,</h1> <h1>User!</h1>
-        </div>
-        <button type='button' className='text-right hover:text-blue-600'>Logout</button>
-      </div>  */}
+
+
+        {/* <div className='flex flex-col pr-2'>
+          <div className='flex pt-2 text-xl gap-2 text-violet-600'>
+            <FaUserAlt className='mt-1 text-lg'/>
+            <h1 className='font-bold'>Username</h1>
+          </div>
+
+          <button type='button'className='text-right text-gray-400 hover:text-gray-900 ease-out duration-300'>Logout</button>
+        </div>  */}
+
+
 
       <div>
         {checkLogin()}

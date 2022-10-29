@@ -10,7 +10,7 @@ const Login = () => {
 
   const toastOptions = { 
     position: "bottom-right",
-    autoClose: 8000,
+    autoClose: 7000,
     pauseOnHover: true,
     draggable: true,
     theme: "light",
@@ -77,7 +77,7 @@ const Login = () => {
   const handleValidation = () => {
     const {password, email} = values;
     if(email === ""){
-      toast.error("Please enter your email.", toastOptions);
+      toast.error("Please enter your username.", toastOptions);
       return false;
     }
     else if(password===""){
@@ -97,8 +97,8 @@ const Login = () => {
       <div className='w-1/2 h-screen flex flex-row text-5xl justify-center items-center bg-gradient-to-b from-blue-700 via-purple-500 to-violet-300 text-white gap-5'>
           <GiAbstract119 className='text-8xl'/>
           <div>
-            <h1>Welcome to</h1>
-            <h1>Mellow Mentorship</h1>
+            <h1>Welcome Back</h1>
+            {/* <h1>Mellow Mentorship</h1> */}
           </div>
       </div>
 
@@ -115,7 +115,7 @@ const Login = () => {
                 type='text'
                 placeholder='username1234'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
                 onChange={(e) => handleChange(e)}
             />
 
@@ -125,11 +125,11 @@ const Login = () => {
                 type='password'
                 placeholder='●●●●●●●●●●'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
                 onChange={(e) => handleChange(e)}
                 />
 
-            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 text-violet-600 hover:border-gray-300 hover:text-violet-600 shadow-md ease-out duration-300 hover:scale-105 hover:shadow-lg'>Login</button>
+            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 text-violet-600 hover:border-gray-300 hover:text-violet-900 shadow-md ease-out duration-300 hover:scale-105 hover:shadow-lg active:bg-violet-400 active:border-violet-400'>Login</button>
 
             <div className='mt-5'>
               <span> Don't have an account? <Link to='/register' className='text-violet-600 hover:text-violet-900 font-bold ease-out duration-200'>Register Now</Link></span>

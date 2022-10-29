@@ -16,6 +16,7 @@ const TasksPage = () => {
       </div>
 
       <div className='ml-72 pt-36'>
+        <h1>Your Tasks</h1>
         
       </div>
     </div>

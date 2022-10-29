@@ -6,13 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
 
 
-
 const Register = () => {
   const navigate = useNavigate();
 
         const toastOptions = { 
             position: "bottom-right",
-            autoClose: 8000,
+            autoClose: 7000,
             pauseOnHover: true,
             draggable: true,
             theme: "light"
@@ -126,7 +125,7 @@ const Register = () => {
                 type='text'
                 placeholder='username1234'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
                 onChange={(e) => handleChange(e)}
             />
 
@@ -136,7 +135,7 @@ const Register = () => {
                 type='email'
                 placeholder='example@email.com'
                 required
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
                 onChange={(e) => handleChange(e)}
               />
 
@@ -144,9 +143,9 @@ const Register = () => {
             <input 
                 name='password'
                 type='password'
-                placeholder='●●●●●●●●●●'
+                placeholder='●●●●●●●●●●●●●'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
                 onChange={(e) => handleChange(e)}
               />
 
@@ -154,9 +153,9 @@ const Register = () => {
             <input 
                 name='confirmPassword'
                 type='password'
-                placeholder='●●●●●●●●●●'
+                placeholder='●●●●●●●●●●●●●'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
                 onChange={(e) => handleChange(e)}
               />
 
@@ -164,21 +163,21 @@ const Register = () => {
               <div className='flex flex-row gap-20 justify-between'>
                 <div className='flex'>
                   <input type='radio' value='1' id='mentor' name='chooseRole' className='peer/mentor'/>
-                  <label htmlFor='mentor' className='hover:cursor-pointer border-2 py-1 px-20 rounded-md shadow-md hover:scale-110 ease-out duration-300 peer-checked/mentor:text-violet-600 hover:text-violet-600 peer-checked/mentor:border-violet-600' >Mentor</label>
+                  <label htmlFor='mentor' className='hover:cursor-pointer border-2 py-1 px-20 rounded-md shadow-md hover:scale-110 ease-out duration-300 peer-checked/mentor:text-violet-600 hover:text-violet-600 peer-checked/mentor:border-violet-600  peer-checked/mentor:font-bold' >Mentor</label>
                 </div>
                 
                 <div className='flex gap-2'>
                   <input type='radio' value='0' id='mentee' name='chooseRole' className='peer/mentee'/>
-                  <label htmlFor='mentee' className=' hover:cursor-pointer border-2 py-1 px-20 rounded-md shadow-md hover:scale-110 ease-out duration-300 peer-checked/mentee:text-violet-600 hover:text-violet-600 peer-checked/mentee:border-violet-600'>Mentee</label>
+                  <label htmlFor='mentee' className=' hover:cursor-pointer border-2 py-1 px-20 rounded-md shadow-md hover:scale-110 ease-out duration-300 peer-checked/mentee:text-violet-600 hover:text-violet-600 peer-checked/mentee:border-violet-600 peer-checked/mentee:font-bold'>Mentee</label>
                 </div>
                 
               </div>
   
 
-            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 hover:border-gray-300 hover:text-violet-900 shadow-md hover:scale-105 ease-out duration-300 hover:shadow-lg text-violet-600'>Register</button>
+            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-4 hover:bg-gray-300 hover:border-gray-300 hover:text-violet-900 shadow-md hover:scale-105 ease-out duration-300 hover:shadow-lg text-violet-600 active:bg-violet-400 active:border-violet-400'>Register</button>
 
             <div className='mt-5'>
-              <span>Already have an account? <Link to='/login' className='text-violet-600 hover:text-violet-800 font-bold ease-out duration-200'>Sign in now</Link></span>
+              <span>Already have an account? <Link to='/login' className='text-violet-600 hover:text-violet-900 font-bold ease-out duration-200'>Sign in now</Link></span>
               
             </div>
           </div>
