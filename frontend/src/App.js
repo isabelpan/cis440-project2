@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Dashboard, Login, Register, TasksPage, CalendarPage, GoalsPage } from './pages';
+import { Dashboard, Login, Register, TasksPage, CalendarPage, GoalsPage, MenteePage, MentorPage } from './pages';
 // import Calendar from './components';
 
 const App = () => {
@@ -42,6 +42,10 @@ const App = () => {
               <Route path='/tasks' element={<TasksPage />} />
 
               <Route path='/goals' element={<GoalsPage />} />
+
+              <Route path='/menteepage' element={<MenteePage />} />
+
+              <Route path='/mentorpage' element={<MentorPage />} />
               
             </Routes>
           </div>

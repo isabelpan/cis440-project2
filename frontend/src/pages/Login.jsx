@@ -58,7 +58,7 @@ const Login = () => {
       if(data['status'] === 0){
         console.log('logged in')
         localStorage.setItem("user_info", JSON.stringify(data))
-        navigate("/")
+        navigate("/dashboard")
       }else 
       if(data['status'] === 2){
         toast.error("Email not found, try again or create an account", toastOptions)
@@ -129,10 +129,10 @@ const Login = () => {
                 onChange={(e) => handleChange(e)}
                 />
 
-            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-600 shadow-md'>Login</button>
+            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-600 shadow-md ease-out duration-300 hover:scale-105'>Login</button>
 
             <div className='mt-5'>
-              <span> Don't have an account? <Link to='/register' className='text-violet-600 hover:text-violet-900 font-bold'>Register Now</Link></span>
+              <span> Don't have an account? <Link to='/register' className='text-violet-600 hover:text-violet-900 font-bold ease-out duration-200'>Register Now</Link></span>
               
             </div>
           </div>

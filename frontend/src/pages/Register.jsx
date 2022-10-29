@@ -163,22 +163,22 @@ const Register = () => {
               <label className='text-lg mt-2'>Are you a Mentor or Mentee?</label>
               <div className='flex flex-row gap-20'>
                 <div className='flex gap-2'>
-                  <label for='mentor' className='hover:cursor-pointer border-2 py-1 px-5 rounded-md' >Mentor</label>
+                  <label for='mentor' className='hover:cursor-pointer border-2 py-1 px-5 rounded-md shadow-md hover:scale-105 ease-out duration-300' >Mentor</label>
                   <input type='radio' value='1' id='mentor' name='chooseRole'/>
                 </div>
                 
                 <div className='flex gap-2'>
-                  <label for='mentee' className=' hover:cursor-pointer border-2 py-1 px-5 rounded-md'>Mentee</label>
+                  <label for='mentee' className=' hover:cursor-pointer border-2 py-1 px-5 rounded-md shadow-md hover:scale-105 ease-out duration-300'>Mentee</label>
                   <input type='radio' value='2' id='mentee' name='chooseRole'/>
                 </div>
                 
               </div>
   
 
-            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-900 shadow-md'>Register</button>
+            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-900 shadow-md hover:scale-105 ease-out duration-300'>Register</button>
 
             <div className='mt-5'>
-              <span>Already have an account? <Link to='/login' className='text-violet-600 hover:text-violet-800 font-bold'>Sign in now</Link></span>
+              <span>Already have an account? <Link to='/login' className='text-violet-600 hover:text-violet-800 font-bold ease-out duration-200'>Sign in now</Link></span>
               
             </div>
           </div>
