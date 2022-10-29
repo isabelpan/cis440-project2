@@ -19,10 +19,6 @@ input[type="radio"]{
   display: none;
 }
 
-input[type="radio"]:checked+label{
-  background-color: blue;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

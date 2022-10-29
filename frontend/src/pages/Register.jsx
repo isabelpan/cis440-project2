@@ -160,22 +160,22 @@ const Register = () => {
                 onChange={(e) => handleChange(e)}
               />
 
-              <label className='text-lg mt-2'>Are you a Mentor or Mentee?</label>
-              <div className='flex flex-row gap-20'>
-                <div className='flex gap-2'>
-                  <label for='mentor' className='hover:cursor-pointer border-2 py-1 px-5 rounded-md shadow-md hover:scale-105 ease-out duration-300' >Mentor</label>
-                  <input type='radio' value='1' id='mentor' name='chooseRole'/>
+              <label className='text-lg mt-2'>Are you a Mentor or Mentee?</label> 
+              <div className='flex flex-row gap-20 justify-between'>
+                <div className='flex'>
+                  <input type='radio' value='1' id='mentor' name='chooseRole' className='peer/mentor'/>
+                  <label htmlFor='mentor' className='hover:cursor-pointer border-2 py-1 px-20 rounded-md shadow-md hover:scale-110 ease-out duration-300 peer-checked/mentor:text-violet-600 hover:text-violet-600 peer-checked/mentor:border-violet-600' >Mentor</label>
                 </div>
                 
                 <div className='flex gap-2'>
-                  <label for='mentee' className=' hover:cursor-pointer border-2 py-1 px-5 rounded-md shadow-md hover:scale-105 ease-out duration-300'>Mentee</label>
-                  <input type='radio' value='2' id='mentee' name='chooseRole'/>
+                  <input type='radio' value='0' id='mentee' name='chooseRole' className='peer/mentee'/>
+                  <label htmlFor='mentee' className=' hover:cursor-pointer border-2 py-1 px-20 rounded-md shadow-md hover:scale-110 ease-out duration-300 peer-checked/mentee:text-violet-600 hover:text-violet-600 peer-checked/mentee:border-violet-600'>Mentee</label>
                 </div>
                 
               </div>
   
 
-            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-900 shadow-md hover:scale-105 ease-out duration-300'>Register</button>
+            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-900 shadow-md hover:scale-105 ease-out duration-300 hover:shadow-lg text-violet-600'>Register</button>
 
             <div className='mt-5'>
               <span>Already have an account? <Link to='/login' className='text-violet-600 hover:text-violet-800 font-bold ease-out duration-200'>Sign in now</Link></span>
