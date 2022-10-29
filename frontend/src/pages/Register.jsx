@@ -175,7 +175,7 @@ const Register = () => {
               </div>
   
 
-            <button type='submit' className='border-2 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-400 hover:border-gray-400 hover:text-violet-900 shadow-md hover:scale-105 ease-out duration-300 hover:shadow-lg text-violet-600'>Register</button>
+            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 hover:border-gray-300 hover:text-violet-900 shadow-md hover:scale-105 ease-out duration-300 hover:shadow-lg text-violet-600'>Register</button>
 
             <div className='mt-5'>
               <span>Already have an account? <Link to='/login' className='text-violet-600 hover:text-violet-800 font-bold ease-out duration-200'>Sign in now</Link></span>
