@@ -29,7 +29,7 @@ const Dashboard = () => {
         <div className='flex flex-row justify-between'>
           {/* welcome/date container */}
           <div className='gap-1 flex flex-col'> 
-            <h1 className='font-bold text-4xl text-violet-600'>Welcome Back</h1>
+            <h1 className='font-bold text-4xl text-violet-700'>Welcome Back</h1>
             <h1 className='text-xl font-bold text-gray-500'>Today is {today} </h1>
           </div>
 

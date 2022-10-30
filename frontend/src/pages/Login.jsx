@@ -115,7 +115,7 @@ const Login = () => {
                 type='text'
                 placeholder='username1234'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-600 focus:border-violet-600 focus:outline-none'
                 onChange={(e) => handleChange(e)}
             />
 
@@ -125,11 +125,11 @@ const Login = () => {
                 type='password'
                 placeholder='●●●●●●●●●●'
                 required 
-                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none'
+                className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-600 focus:border-violet-600 focus:outline-none'
                 onChange={(e) => handleChange(e)}
                 />
 
-            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 text-violet-600 hover:border-gray-300 hover:text-violet-900 shadow-md ease-out duration-300 hover:scale-105 hover:shadow-lg active:bg-violet-400 active:border-violet-400'>Login</button>
+            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 text-violet-600 hover:border-gray-300 shadow-md ease-out duration-300 hover:scale-105 hover:shadow-lg active:bg-violet-500 active:border-violet-500 active:shadow-gray-400 active:text-violet-900'>Login</button>
 
             <div className='mt-5'>
               <span> Don't have an account? <Link to='/register' className='text-violet-600 hover:text-violet-900 font-bold ease-out duration-200'>Register Now</Link></span>

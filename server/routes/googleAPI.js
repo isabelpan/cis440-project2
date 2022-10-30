@@ -86,14 +86,6 @@ function getUserInfo(token){
     }
     
 
-
-
-
-
-
-
-
-
 router.post('/create-event', async (req, res, next) => {
     try {
         const { event, description, location, startDateTime } = req.body
