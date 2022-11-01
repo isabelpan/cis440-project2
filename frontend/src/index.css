@@ -19,6 +19,7 @@ input[type="radio"]{
   display: none;
 }
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

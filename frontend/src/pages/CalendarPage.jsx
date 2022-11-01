@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Sidebar, ToastCalendar } from '../components';
+import { Navbar, Sidebar } from '../components';
 
 const CalendarPage = () => {
   return (
@@ -16,7 +16,7 @@ const CalendarPage = () => {
       </div>
 
       <div className='ml-72 pt-36'>
-        <ToastCalendar />
+
         
       </div>
     </div>

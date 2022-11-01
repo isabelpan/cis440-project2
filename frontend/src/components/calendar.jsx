@@ -6,36 +6,36 @@ import { gapi } from "gapi-script";
 
 function Calendar() {
 
-    useEffect(() => {
-        function start() {
-          gapi.client.init({
-            clientId: process.env.REACT_PUBLIC_GOOGLE_CLIENT_ID,
-            scope: '',
-          });
-        }
+    // useEffect(() => {
+    //     function start() {
+    //       gapi.client.init({
+    //         clientId: process.env.REACT_PUBLIC_GOOGLE_CLIENT_ID,
+    //         scope: '',
+    //       });
+    //     }
     
-        gapi.load('client:auth2', start);
-      }, []);
+    //     gapi.load('client:auth2', start);
+    //   }, []);
     
 
-    const responseGoogle = (response) => {
-        console.log(response)
-        const { code } = response
-        console.log('creating tokens')
-        axios
-            .post('http://localhost:9000/googleAPI/create-tokens', { code })
-            .then(response => {
-                console.log(response.data)
-                setSignedIn(true)
-            })
-            .catch(error => console.log(error.message))
+    // const responseGoogle = (response) => {
+    //     console.log(response)
+    //     const { code } = response
+    //     console.log('creating tokens')
+    //     axios
+    //         .post('http://localhost:9000/googleAPI/create-tokens', { code })
+    //         .then(response => {
+    //             console.log(response.data)
+    //             setSignedIn(true)
+    //         })
+    //         .catch(error => console.log(error.message))
  
-    }
+    // }
 
-    const responseError = (error) => {
-        console.log('error below')
-        console.log(error)
-    }
+    // const responseError = (error) => {
+    //     console.log('error below')
+    //     console.log(error)
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -52,22 +52,23 @@ function Calendar() {
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
     const [startDateTime, setStartDateTime] = useState('');
-    const [signedIn, setSignedIn] = useState(false);
+    // const [signedIn, setSignedIn] = useState(false);
 
     return (
-        <div>
-            <div className="calendar">
-                <h1>Calendar</h1>
-            </div>
-            {
-                !signedIn ? (<div><GoogleLogin clientId='357003526122-fnc0n6ua8um1iht4inc2brhu479afina.apps.googleusercontent.com'
-                    buttonText='Sign in to authorize the calendar'
-                    onSuccess={responseGoogle}
-                    onFailure={responseError}
-                    responseType='code'
-                    accessType='offline'
-                    scope='openid email profile https://www.googleapis.com/auth/calendar'
-                /></div>) : (<div>
+        // <div>
+        //     <div className="calendar">
+        //         <h1>Calendar</h1>
+        //     </div>
+        //     {
+        //         !signedIn ? (<div><GoogleLogin clientId='357003526122-fnc0n6ua8um1iht4inc2brhu479afina.apps.googleusercontent.com'
+        //             buttonText='Sign in to authorize the calendar'
+        //             onSuccess={responseGoogle}
+        //             onFailure={responseError}
+        //             responseType='code'
+        //             accessType='offline'
+        //             scope='openid email profile https://www.googleapis.com/auth/calendar'
+        //         /></div>) : (
+                <div>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="event">Event</label><br />
                         <input type="text" id="event" value={event} onChange={e => setEvent(e.target.value)} />
@@ -88,10 +89,10 @@ function Calendar() {
                         <button type='submit'>Create Event</button>
                     </form>
                 </div>)
-            }
+    //         }
 
-        </div>
-    )
+    //     </div>
+    // )
 }
 
 
