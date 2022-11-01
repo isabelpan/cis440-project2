@@ -24,10 +24,11 @@ function GLoginButton() {
         const { code } = response
         console.log('creating tokens')
         axios
-            .post('http://localhost:9000/googleAPI/create-tokens', { code })
+            .post('http://localhost:9000/googleAPI/login', { code })
             .then(response => {
+                console.log('responce data')
                 console.log(response.data)
-                setSignedIn(true)
+    
             })
             .catch(error => console.log(error.message))
  
