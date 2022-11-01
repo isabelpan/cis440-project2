@@ -123,7 +123,8 @@ const Login = () => {
             <input 
                 name='password'
                 type='password'
-                placeholder='●●●●●●●●●●'
+                placeholder='●●●●●●●●●●●●●'
+                autoComplete='on'
                 required 
                 className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-600 focus:border-violet-600 focus:outline-none'
                 onChange={(e) => handleChange(e)}

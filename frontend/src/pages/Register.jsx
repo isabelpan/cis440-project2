@@ -101,7 +101,7 @@ const Register = () => {
           setValues({...values,[event.target.name]:event.target.value});
       }
   return (
-    <div className='flex w-screen'>
+    <div className='flex w-screen h-screen'>
       <div className='w-1/2 h-screen flex flex-row text-5xl gap-5 justify-center items-center bg-gradient-to-b from-blue-700 via-purple-500 to-violet-300 text-white'>
         <GiAbstract119 className='text-8xl'/>
         <div>
@@ -111,7 +111,7 @@ const Register = () => {
         </div>
       </div>
 
-      <div className='w-1/2 flex flex-col  items-center justify-center' >
+      <div className='w-1/2 h-screen flex flex-col items-center justify-center' >
         <form onSubmit={(event) => handleSubmit(event)} className='rounded-lg bg-white w-3/4 p-10'>
           <div>
             <h1 className='font-bold text-4xl mb-8'><span className='text-violet-600'>Register</span> Your Account</h1>
@@ -144,6 +144,7 @@ const Register = () => {
                 name='password'
                 type='password'
                 placeholder='●●●●●●●●●●●●●'
+                autoComplete='on'
                 required 
                 className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-600 focus:border-violet-600 focus:outline-none'
                 onChange={(e) => handleChange(e)}
@@ -154,6 +155,7 @@ const Register = () => {
                 name='confirmPassword'
                 type='password'
                 placeholder='●●●●●●●●●●●●●'
+                autoComplete='on'
                 required 
                 className='h-10 border-1 border-gray-300 rounded-md px-2 shadow-md focus:ring-1 focus:ring-violet-600 focus:border-violet-600 focus:outline-none'
                 onChange={(e) => handleChange(e)}
