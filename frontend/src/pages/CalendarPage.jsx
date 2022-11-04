@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Sidebar } from '../components';
-import { Calendar } from '../components/calendar';
+// import { Calendar } from '../components/calendar';
+import { googleCalendarSync } from '../components/calendar';
 
 const CalendarPage = () => {
   return (
@@ -17,7 +18,7 @@ const CalendarPage = () => {
       </div>
 
       <div className='ml-72 pt-36'>
-      <Calendar />
+      <Eventcalendar data = {myEvents}></Eventcalendar>
         
       </div>
     </div>

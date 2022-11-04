@@ -20,7 +20,7 @@ const REFRESH_TOKEN = "4/0ARtbsJpq1wTp72Z"
 
 googleCalendarSync.init({
     auth: oauth2Client,
-    authUrl: 'http://localhost3000',
+    authUrl: 'https://oauth2.googleapis.com/token',
     clientId: GOOGLE_CLIENT_ID,
     refreshURL: REFRESH_TOKEN,
 })
