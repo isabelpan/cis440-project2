@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Sidebar } from '../components';
+import { Calendar } from '../components/calendar';
 
 const CalendarPage = () => {
   return (
@@ -16,7 +17,7 @@ const CalendarPage = () => {
       </div>
 
       <div className='ml-72 pt-36'>
-
+      <Calendar />
         
       </div>
     </div>
