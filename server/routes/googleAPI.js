@@ -27,7 +27,7 @@ googleCalendarSync.init({
 
 function getToken(type, token, callback) {
 
-    const postData ={
+    const postData =
         'client_id=' + GOOGLE_CLIENT_ID + '&' +
         'client_secret=' + GOOGLE_CLIENT_SECRET + '&' +
         (type === 'refresh' ?
@@ -38,7 +38,7 @@ function getToken(type, token, callback) {
             'redirect_uri = postmessage&' +
             'code_verifier='
         )
-    };
+   
 
     const postOptions = {
         host: 'oauth2.googleapis.com',
@@ -64,13 +64,14 @@ function getToken(type, token, callback) {
 
     postReq.write(postData)
     postReq.end();
+}
     
-    function getPostData (req, callback) {
-        let body = '';
-        req.on('data', (data) => {
-        body += data;
+function getPostData (req, callback) {
+    let body = '';
+    req.on('data', (data) => {
+    body += data;
     
-    });
+});
 
     req.on('end', () => {
         const parsed = new URLSearchParams(body);
@@ -79,9 +80,54 @@ function getToken(type, token, callback) {
             data[pair[0] = pair[1]];
         }
         callback(data)
-    })
+    });
 }
 
+function checkCSRF(req, res) {
+    // check if CSRF header is present
+    if (req.headers['x-requested-with'] === 'XMLHttpRequest') {
+        return true; 
+    } 
+    // otherwise end request
+    res.statusCode = 500; 
+    res.end();
+    return false;
+}
+
+function sendResponse(res, data) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
+    res.end(data)
+}
+
+const server = http.createServer(function (req, res) {
+    if (req.method === 'OPTIONS') {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
+        res.end();
+    } else if (req.url.startsWith('/auth')) {   //handles auth
+        if (checkCSRF(req,res)) {
+            getPostData(req, (data) => {
+                getToken('auth',data.code, (token) => {
+                    sendResponse(res, token);
+                });
+            })
+        }
+    } else if (req.url.startsWith('/refresh')) { //handles refresh
+        if (checkCSRF(req, res)) {
+            getPostData(req, (data) => {
+                // exchanges refresh token to access token (on access token expiry)
+                getToken('refresh', data.REFRESH_TOKEN, (token) => {
+                    sendResponse(res, token);
+                })
+            })
+        }
+    }
+}) 
+
+
+
+// ------------
 
 router.get('/', async (req, res, next) => {
     res.send({ message: 'Ok api is working' })
@@ -184,3 +230,4 @@ async function createTokens(req, res, next) {
 // });
 
 module.exports = router;
+server.listen(8080);
