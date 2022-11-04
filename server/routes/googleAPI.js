@@ -10,16 +10,83 @@ var userInfo = {}
 // expires after 7 days, entered 10/25
 const REFRESH_TOKEN = "4/0ARtbsJpq1wTp72Z"
 
-const oauth2Client = new google.auth.OAuth2(
-    GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET,
-    // Might need to change this to localhost:9000
-    // our backend is running on port 9000 and frontend is on 3000
-    'http://localhost:3000'
-)
+// const oauth2Client = new google.auth.OAuth2(
+//     GOOGLE_CLIENT_ID,
+//     GOOGLE_CLIENT_SECRET,
+//     // Might need to change this to localhost:9000
+//     // our backend is running on port 9000 and frontend is on 3000
+//     'http://localhost:3000'
+// )
+
+googleCalendarSync.init({
+    auth: oauth2Client,
+    authUrl: 'http://localhost3000',
+    clientId: GOOGLE_CLIENT_ID,
+    refreshURL: REFRESH_TOKEN,
+})
+
+function getToken(type, token, callback) {
+
+    const postData ={
+        'client_id=' + GOOGLE_CLIENT_ID + '&' +
+        'client_secret=' + GOOGLE_CLIENT_SECRET + '&' +
+        (type === 'refresh' ?
+            'grant_type=refresh_token&' +
+            'refresh_token=' + token:
+            'grant_type=authorization_code&' +
+            'code=' + token + '&' +
+            'redirect_uri = postmessage&' +
+            'code_verifier='
+        )
+    };
+
+    const postOptions = {
+        host: 'oauth2.googleapis.com',
+        port: '3000',
+        path: '/token',
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/x-www-form-urlencoded',
+            'Content_Length' : Buffer.byteLength(postData)
+        }
+    };
+
+    const postReq = https.request(postOptions, function (response) {
+        response.setEncoding('utf8');
+        response.on('data', d => {
+            callback(d);
+        });
+    });
+    
+    postReq.on('error', error);
+    console.log(error)
+    
+
+    postReq.write(postData)
+    postReq.end();
+    
+    function getPostData (req, callback) {
+        let body = '';
+        req.on('data', (data) => {
+        body += data;
+    
+    });
+
+    req.on('end', () => {
+        const parsed = new URLSearchParams(body);
+        const data = {}
+        for (const pair of parsed.entries()) {
+            data[pair[0] = pair[1]];
+        }
+        callback(data)
+    })
+}
+
+
 router.get('/', async (req, res, next) => {
     res.send({ message: 'Ok api is working' })
 });
+
 
 
 
@@ -71,49 +138,49 @@ async function createTokens(req, res, next) {
     }
 };
 
-function getUserInfo(req, res, next){
-    console.log('getting user info')
-    token = req.idToken
-    var url = 'https://oauth2.googleapis.com/tokeninfo?id_token=' + token
-    console.log(url)
-    request.get({
-        url: url,
-        json: true
-    }, async (error, response) => {
-        if(error){
-            throw error
-        }
-        req.userInfo = response.body
-        next()
-    })
-    }
+// function getUserInfo(req, res, next){
+//     console.log('getting user info')
+//     token = req.idToken
+//     var url = 'https://oauth2.googleapis.com/tokeninfo?id_token=' + token
+//     console.log(url)
+//     request.get({
+//         url: url,
+//         json: true
+//     }, async (error, response) => {
+//         if(error){
+//             throw error
+//         }
+//         req.userInfo = response.body
+//         next()
+//     })
+//     }
 
     
     
 
-router.post('/create-event', async (req, res, next) => {
-    try {
-        const { event, description, location, startDateTime } = req.body
+// router.post('/create-event', async (req, res, next) => {
+//     try {
+//         const { event, description, location, startDateTime } = req.body
 
-        oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
+//         oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN})
 
-        const calendar = google.calendar('v3')
-        const response = await calendar.events.insert({
-            auth: oauth2Client,weaisu
-            requestBody: {
-                event: event,
-                description: description,
-                location: location,
-                colorId: '7',
-                start: {
-                    dateTime: new Date(startDateTime)
-                },
-            }
-        })
-        res.send(response)
-    } catch (error) {
-        next(error)
-    }
-});
+//         const calendar = google.calendar('v3')
+//         const response = await calendar.events.insert({
+//             auth: oauth2Client,weaisu
+//             requestBody: {
+//                 event: event,
+//                 description: description,
+//                 location: location,
+//                 colorId: '7',
+//                 start: {
+//                     dateTime: new Date(startDateTime)
+//                 },
+//             }
+//         })
+//         res.send(response)
+//     } catch (error) {
+//         next(error)
+//     }
+// });
 
 module.exports = router;
