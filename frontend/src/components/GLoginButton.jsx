@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
 import { gapi } from "gapi-script";
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
-function GLoginButton() {
+
+function GLoginButton({toggleModle}) {
+    const navigate = useNavigate();
 
     useEffect(() => {
         function start() {
@@ -19,18 +22,28 @@ function GLoginButton() {
       }, []);
     
 
+      
+
     const responseGoogle = (response) => {
         console.log(response)
         const { code } = response
         console.log('creating tokens')
         axios
-            .post('http://localhost:9000/googleAPI/create-tokens', { code })
+            .post('http://localhost:9000/googleAPI/login', { code })
             .then(response => {
+                console.log('responce data')
                 console.log(response.data)
-                setSignedIn(true)
+
+                if(response.data['hasAccount'] === 0){
+                    console.log('pulling up modle')
+                    toggleModle()
+                }else{
+                    sessionStorage.setItem("user_info", JSON.stringify(response.data))
+                    navigate('/')
+                }
+                
             })
             .catch(error => console.log(error.message))
- 
     }
 
     const responseError = (error) => {
@@ -53,7 +66,6 @@ function GLoginButton() {
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
     const [startDateTime, setStartDateTime] = useState('');
-    const [signedIn, setSignedIn] = useState(false);
 
     return(
         <div >

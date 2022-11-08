@@ -16,6 +16,7 @@ const getAllUsers = () => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM user', (err, results) => {
             if(err){
+                console.log('throwing error')
                 return reject(err);
             }
             return resolve(results);
@@ -50,6 +51,19 @@ const createDashboard = (name, isMentor) => {
     })   
 }
 
+const updateDashboard = (dashboardKey, isMentor, name) => {
+    console.log('creating dashboard')
+    return new Promise((resolve, reject) => {
+        // no quotes in sql query
+        pool.query("UPDATE dashboard SET (??) = (?) WHERE dashboardKey = (??)", [isMentor, name, dashboardKey], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })   
+}
+
 const createUser = (gInfo, isMentor) => {
     console.log('creating user')
     return new Promise((resolve, reject) => {
@@ -63,4 +77,4 @@ const createUser = (gInfo, isMentor) => {
 }
 
 
-module.exports = { getUser, createDashboard, createUser}
+module.exports = { getUser, createDashboard, createUser, updateDashboard}
