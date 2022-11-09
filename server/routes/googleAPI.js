@@ -24,26 +24,39 @@ router.get('/', async (req, res, next) => {
 router.post('/create-account', async (req, res) => {
 
     console.log('creating account')
-    var isMentor = req.body.isMentor
+    var isMentor = Number(req.body.isMentor)
     var dashboardKey = req.body.dashboardKey
+    var userInfo = req.body.userInfo
+    var isMentorString
+
     console.log(isMentor)
     console.log(dashboardKey)
 
+    console.log('userInfo')
+    console.log(userInfo)
+
     switch (isMentor){
         case 0:
-            var isMentorString = 'mentorName';
+            isMentorString = 'menteeName';
             break
         case 1:
-            var isMentorString = 'menteeName'
+            isMentorString = 'mentorName';
+            break
     }
+    console.log(isMentorString)
 
     if (dashboardKey === ''){
-        let dashboardStatus = await createDashboard(req.userInfo.name, isMentorString)
-        let userStatus = await createUser(req.userInfo, isMentor)
-        let newUser = await getUser(email)      
+        console.log('creating dashboard')
+        let dashboardStatus = await createDashboard(userInfo.given_name, isMentorString)
+        let userStatus = await createUser(userInfo, isMentor)
+        let newUser = await getUser(userInfo.email)
+        res.send(newUser)    
     }else{
-        let dashboardStatus = await updateDashboard(Number(dashboardKey), isMentorString, userInfo.name)
-        let userStatus = await 
+        console.log('inserting into dashboard')
+        let dashboardStatus = await updateDashboard(Number(dashboardKey), isMentorString, userInfo.given_name)
+        let userStatus = await createUser(userInfo, isMentor, Number(dashboardKey))
+        let newUser = await getUser(userInfo.email)
+        res.send(newUser)
     }
 
 

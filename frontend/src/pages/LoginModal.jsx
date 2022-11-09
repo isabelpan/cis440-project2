@@ -1,10 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const Modal = ()  => {
+    const navigate = useNavigate();
 
     const [isMentore, setIsMentore] = useState(0)
     const [code, setCode] = useState('')
+
+    const user_info = JSON.parse(sessionStorage.getItem('user_info'))
 
     function mentoreHandeler(e){
         setIsMentore(e.target.value)
@@ -17,15 +22,17 @@ const Modal = ()  => {
 
     async function handleSubmit(){
         console.log('submitting modal')
-        const results = {'dashboardKey': code, 'isMentor': isMentore}
+        const results = {'dashboardKey': code, 'isMentor': isMentore, 'userInfo': user_info}
 
         axios
             .post('http://localhost:9000/googleAPI/create-account', results)
             .then(response => {
                 console.log(response.data)
-            })
-        
+                sessionStorage.setItem("user_info", JSON.stringify(response.data))
+            }).catch(error => console.log(error.message))
 
+        navigate('/')
+        
     }
 
 

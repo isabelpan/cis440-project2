@@ -55,7 +55,7 @@ const updateDashboard = (dashboardKey, isMentor, name) => {
     console.log('creating dashboard')
     return new Promise((resolve, reject) => {
         // no quotes in sql query
-        pool.query("UPDATE dashboard SET (??) = (?) WHERE dashboardKey = (??)", [isMentor, name, dashboardKey], (err, results) => {
+        pool.query("UPDATE dashboard SET ?? = ? WHERE dashboardKey = ?", [isMentor, name, dashboardKey], (err, results) => {
             if(err){
                 return reject(err)
             }
@@ -64,10 +64,10 @@ const updateDashboard = (dashboardKey, isMentor, name) => {
     })   
 }
 
-const createUser = (gInfo, isMentor) => {
+const createUser = (gInfo, isMentor, dashboardKey=lastDashboardKey) => {
     console.log('creating user')
     return new Promise((resolve, reject) => {
-        pool.query("INSERT INTO user (email, fname, lname, isMentor, dashboardKey) VALUES (?, ?, ?, ?, ?)", [gInfo.email, gInfo.given_name, gInfo.family_name, isMentor, lastDashboardKey], (err, results) => {
+        pool.query("INSERT INTO user (email, fname, lname, isMentor, dashboardKey) VALUES (?, ?, ?, ?, ?)", [gInfo.email, gInfo.given_name, gInfo.family_name, isMentor, Number(dashboardKey)], (err, results) => {
             if(err){
                 return reject(err)
             }

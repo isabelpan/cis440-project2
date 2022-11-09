@@ -33,12 +33,13 @@ function GLoginButton({toggleModle}) {
             .then(response => {
                 console.log('responce data')
                 console.log(response.data)
+                
+                sessionStorage.setItem("user_info", JSON.stringify(response.data))
 
                 if(response.data['hasAccount'] === 0){
                     console.log('pulling up modle')
                     toggleModle()
                 }else{
-                    sessionStorage.setItem("user_info", JSON.stringify(response.data))
                     navigate('/')
                 }
                 
