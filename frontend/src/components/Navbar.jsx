@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink as Link, useLocation } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
+import Modal from '../pages/LoginModal';
+
 
 
 const LoggedInContainer = ({ username, customFunc }) => {
@@ -35,13 +37,16 @@ const LoggedOutContainer = () => {
 
 const Navbar = () => {
 
+
+
   const isLoggedIn = () => {
 
-    if(localStorage.length === 1 ){
-      const user = JSON.parse(localStorage.getItem(''));
+    if(sessionStorage.length === 1 ){
+      const user = JSON.parse(sessionStorage.getItem('user_info'));
+      console.log(user)
   
       console.log('User is logged in.');
-      console.log(user['username']);
+      console.log(user['fname']);
       return(true);
     }
     else{
@@ -51,19 +56,19 @@ const Navbar = () => {
   }; // end of isLoggedIn func
 
   const logoutFunc = () => {
-    localStorage.clear('user_info');
+    sessionStorage.clear('user_info');
   
     window.location.reload();
   }; // end of logoutFunc 
 
   const checkLogin = () => {
     if(isLoggedIn()){
-      const user = JSON.parse(localStorage.getItem('user_info'));
+      const user = JSON.parse(sessionStorage.getItem('user_info'));
 
       console.log('logged in')
-      console.log(user['username']);
+      console.log(user['fname']);
 
-      return(<LoggedInContainer username={user['username']} customFunc={logoutFunc} />);
+      return(<LoggedInContainer fname={user['fname']} customFunc={logoutFunc} />);
     }
     else{
       console.log('not logged in');
@@ -94,7 +99,7 @@ const Navbar = () => {
         {/* <div className='flex flex-col pr-2'>
           <div className='flex pt-2 text-xl gap-2 text-violet-600'>
             <FaUserAlt className='mt-1 text-lg'/>
-            <h1 className='font-bold'>Username</h1>
+            <h1 className='font-bold'>fname</h1>
           </div>
 
           <button type='button'className='text-right text-gray-400 hover:text-gray-900 ease-out duration-300'>Logout</button>
@@ -106,8 +111,8 @@ const Navbar = () => {
         {checkLogin()}
       </div>
 
-        
     </div>
+
   )
 }
 
