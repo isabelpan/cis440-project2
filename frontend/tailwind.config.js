@@ -23,6 +23,7 @@ module.exports = {
       },
       borderWidth:{
         1: '1px',
+        3: '3px',
       },
       height:{
         80: '80px',

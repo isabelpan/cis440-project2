@@ -131,7 +131,7 @@ const Login = () => {
                 onChange={(e) => handleChange(e)}
                 />
 
-            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 text-violet-600 hover:border-gray-300 shadow-md ease-out duration-300 hover:scale-105 hover:shadow-lg active:bg-violet-500 active:border-violet-500 active:shadow-gray-400 active:text-violet-900'>Login</button>
+            <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 text-violet-600 hover:border-gray-300 shadow-md ease-out duration-300 hover:scale-105 hover:shadow-lg active:bg-violet-500 active:border-violet-500 active:shadow-gray-400 active:text-violet-900'>Sign in</button>
 
             <div className='text-center flex flex-col gap-2 mt-4 shadow-sm'>
               <GLoginButton />

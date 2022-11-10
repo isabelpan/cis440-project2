@@ -2,8 +2,9 @@ import { BsFillCalendarDateFill, BsFillFileBarGraphFill } from 'react-icons/bs';
 import { IoIosListBox } from 'react-icons/io';
 import { GrLinkedin } from 'react-icons/gr';
 import { ImGoogle2, ImProfile } from 'react-icons/im';
-import { MdDashboard } from 'react-icons/md'
+import { MdDashboard, MdFeed } from 'react-icons/md'
 
+ 
 const IsMentor = () => {
 
 }
@@ -27,6 +28,10 @@ export const links = [
             {
                 name: 'goals',
                 icon: <BsFillFileBarGraphFill />
+            },
+            {
+                name: 'feedback',
+                icon: <MdFeed />
             }
         ]
     },

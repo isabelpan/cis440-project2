@@ -11,7 +11,7 @@ const Sidebar = () => {
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-600 hover:bg-light-gray m-2'
 
   return (
-    <div className='h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-19'>
+    <div className='h-screen w-full md:overflow-hidden overflow-auto md:hover:overflow-auto pb-19'>
         <>
         <div className='flex flex-row justify-evenly'>
             <Link to='/dashboard' className='items-center gap-1 mt-3 flex text-center text-4xl font-extrabold tracking-tight dark:text-white text-slate-900 pt-4'>

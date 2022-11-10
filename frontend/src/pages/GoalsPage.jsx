@@ -9,13 +9,13 @@ const GoalsPage = () => {
           <Navbar />
         </div>
 
-        <div className ='w-15 fixed sidebar bg-white'>
+        <div className ='w-2/12 fixed sidebar bg-white'>
           <Sidebar />
         </div>
       
       </div>
 
-      <div className='ml-72 pt-36'>
+      <div lassName='w-10/12 float-right bg-gray-50 h-full py-14 pl-10'>
         
       </div>
     </div>

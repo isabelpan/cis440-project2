@@ -83,7 +83,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex justify-between flex-row p-5 shadow-md float-right w-85'>
+    <div className='flex justify-between flex-row py-5 px-8 border-b-3 border-violet-500 float-right w-10/12 bg-white'>
         <div className='gap-3 flex items-center no-underline justify-between my-0 mx-2.5 text-3xl cursor-pointer'>
           {GetRoute()}
         </div>
