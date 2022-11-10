@@ -53,11 +53,6 @@ const TaskForm = ({ addTask }) => {
         setTask("");
     }
 
-    const deleteTask = (id) => {
-      let updatedTasks = [...tasks].filter((task) => task.id !== id);
-      setTasks(updatedTasks);
-
-    } 
 
     const toggleComplete = (id) => {
       let updatedTasks = [...tasks].map((task) => {

@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const TaskList = ({ taskList, handleToggle, handleFilter }) => {
+
+  const [tasks, setTasks] = useState([]);
+
+  const deleteTask = (id) => {
+    let updatedTasks = [...tasks].filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+
+  } 
 
   return (
     <div>

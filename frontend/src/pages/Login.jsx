@@ -5,9 +5,16 @@ import axios from "axios";
 import { GiAbstract119 } from 'react-icons/gi';
 import "react-toastify/dist/ReactToastify.css";
 import GLoginButton from '../components/GLoginButton';
+import Modal from './LoginModal';
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const [modalVisable, setModalVisable] = useState(false)
+
+  function toggleModle(){
+    setModalVisable(!modalVisable)
+  }
 
   const toastOptions = { 
     position: "bottom-right",
@@ -95,6 +102,7 @@ const Login = () => {
 
   return (
     <div className='flex w-screen'>
+      {modalVisable && <Modal/>}
       <div className='w-1/2 h-screen flex flex-row text-5xl justify-center items-center bg-gradient-to-b from-blue-700 via-purple-500 to-violet-300 text-white gap-5'>
           <GiAbstract119 className='text-8xl'/>
           <div>
@@ -134,7 +142,8 @@ const Login = () => {
             <button type='submit' className='border-1 border-gray-300 rounded-md h-10 mt-5 hover:bg-gray-300 text-violet-600 hover:border-gray-300 shadow-md ease-out duration-300 hover:scale-105 hover:shadow-lg active:bg-violet-500 active:border-violet-500 active:shadow-gray-400 active:text-violet-900'>Sign in</button>
 
             <div className='text-center flex flex-col gap-2 mt-4 shadow-sm'>
-              <GLoginButton />
+              <GLoginButton toggleModle={toggleModle}/>
+              
             </div>
 
             <div className='mt-10'>
