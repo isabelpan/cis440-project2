@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Dashboard, Login, Register, TasksPage, CalendarPage, GoalsPage, MenteePage, MentorPage } from './pages';
+import { Dashboard, Login, Register, TasksPage, CalendarPage, GoalsPage, FeedbackPage, MenteePage, MentorPage } from './pages';
 // import Calendar from './components';
 
 const App = () => {
@@ -16,40 +16,42 @@ const App = () => {
 
   function callAPI() {
     fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
-        .then(res => setTest(res))
-        .catch(err => err)
-};
+      .then(res => res.text())
+      .then(res => setTest(res))
+      .catch(err => err)
+  };
 
 
 
   return (
-      <div>
-        <BrowserRouter>
-          
-          <div>
-            <Routes>
-              <Route path='/' element={<Dashboard />} />
-              <Route path='/dashboard' element={<Dashboard />} />
+    <div>
+      <BrowserRouter>
 
-              <Route path='/login' element={<Login />} />
+        <div>
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/dashboard' element={<Dashboard />} />
 
-              <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
 
-              <Route path='/calendar' element={<CalendarPage />} />
+            <Route path='/register' element={<Register />} />
 
-              <Route path='/tasks' element={<TasksPage />} />
+            <Route path='/calendar' element={<CalendarPage />} />
 
-              <Route path='/goals' element={<GoalsPage />} />
+            <Route path='/tasks' element={<TasksPage />} />
 
-              <Route path='/menteepage' element={<MenteePage />} />
+            <Route path='/goals' element={<GoalsPage />} />
 
-              <Route path='/mentorpage' element={<MentorPage />} />
-              
-            </Routes>
-          </div>
-        </BrowserRouter>
-      </div>
+            <Route path='/menteepage' element={<MenteePage />} />
+
+            <Route path='/mentorpage' element={<MentorPage />} />
+
+            <Route path='/feedback' element={<FeedbackPage />} />
+
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 
