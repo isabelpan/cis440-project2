@@ -40,6 +40,7 @@ const FeedbackPage = () => {
         setUsers(newUsers);
     };
 
+
     return (
         <div>
             <div>
@@ -96,13 +97,17 @@ const FeedbackPage = () => {
                         </div>
                     </div>
 
+                    {/* <div>
+                        <FeedbackRequest />
+                    </div> */}
+
                     <div id='rightContainer' className='pt-2 h-full float-right rounded-lg mr-2 flex flex-col gap-2 '>
                         <div id='toolsContainer' className='place-content-center border-3 border-violet-400 rounded-lg p-8 py-8 shadow-xl flex flex-col gap-5 bg-white'>
                             <h1 className='font-bold text-center text-md text-violet-500'>Other Tools</h1>
                             <hr />
-                            <button className="p-2 w-96 ml-auto rounded-lg bg-violet-500 hover:bg-violet-700 shadow-md hover:shadow-lg text-white"><SiZoom />Zoom</button>
-                            <button className="p-2 w-96 ml-auto rounded-lg bg-violet-500 hover:bg-violet-700 shadow-md hover:shadow-lg text-white"><SiSlack />Slack </button>
-                            <button className="p-2 w-96 ml-auto rounded-lg bg-violet-500 hover:bg-violet-700 shadow-md hover:shadow-lg text-white"><SiGmail />Gmail</button>
+                            <button className="p-2 w-96 ml-auto rounded-lg bg-violet-500 hover:bg-violet-700 shadow-md hover:shadow-lg text-white "><SiZoom size={30} />Zoom</button>
+                            <button className="p-2 w-96 ml-auto rounded-lg bg-violet-500 hover:bg-violet-700 shadow-md hover:shadow-lg text-white"><SiSlack size={20} />Slack </button>
+                            <button className="p-2 w-96 ml-auto rounded-lg bg-violet-500 hover:bg-violet-700 shadow-md hover:shadow-lg text-white"><SiGmail size={20} />Gmail</button>
                         </div>
                     </div>
                 </div>
