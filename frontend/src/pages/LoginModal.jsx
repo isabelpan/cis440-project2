@@ -46,17 +46,17 @@ const Modal = ()  => {
         <div
         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none p-10">
                     <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
                         <p className="text-3xl font-semibold">Welcome!</p>
                     </div>
-                    <div className="text-1xl font-semibold">
+                    <div className="text-1xl font-semibold pb-10">
                         <p>We just need a few more pieces of information to set up your account.</p>
                     </div>
                     <form >
-                    <label className='text-1xl font-semibold'>Are you a Mentor or Mentee?</label> 
+                    <label className='text-1xl font-semibold'>Are you a <span className="text-violet-600">Mentor or Mentee?</span></label> 
 
-                    <div className='flex flex-row gap-6 w-full text-center'>
+                    <div className='flex flex-row gap-6 w-full text-center pb-10'>
                         <div className='flex w-1/2'>
                             <input type='radio' value='1' id='mentor' name='chooseRole' className='peer/mentor' onChange={(e) => mentoreHandeler(e)}/>
                             <label htmlFor='mentor' className='hover:cursor-pointer border-2 py-1 w-full rounded-md shadow-md hover:scale-110 ease-out duration-300 peer-checked/mentor:text-violet-600 hover:text-violet-600 peer-checked/mentor:border-violet-600  peer-checked/mentor:font-bold'>Mentor</label>

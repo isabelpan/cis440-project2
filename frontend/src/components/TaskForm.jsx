@@ -1,7 +1,8 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import Tasks from './Tasks';
 
-const TaskForm = ({ addTask }) => {
+const TaskForm = ( ) => {
     const inputField = 'border-2 rounded-md px-3 py-2 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none text-gray-700 max-h-24 bg-gray-100 focus:bg-white ease-out duration-300 shadow-md';
     const inputContainer = 'flex flex-col gap-1';
     const taskHeader = 'text-3xl text-violet-700 font-bold';
@@ -18,7 +19,6 @@ const TaskForm = ({ addTask }) => {
     const [taskEditing, setTaskEditing] = useState(null);
     const [editingText, setEditingText] = useState("");
 
-    const taskId = new Date().getTime();
 
 
     // const taskValues = {
@@ -38,19 +38,27 @@ const TaskForm = ({ addTask }) => {
         // addTask(userInput);
         // setUserInput('');
 
-        e.preventDefault();
+        const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
+        console.log(userInfo)
 
         const newTask = {
-          taskId: taskId,
-          taskTitle: "",
-          taskDescription: "",
-          deadlineDate: "",
-          priority: "",
-          isComplete: false,
+          taskTitle: e.target.taskTitle.value,
+          taskDescription: e.target.taskDescription.value,
+          deadlineDate: e.target.deadlineDate.value,
+          priority: e.target.taskPriority.value,
+          isComplete: 0,
+          dashboardKey: userInfo.dashboardKey
         };
 
-        setTask([...tasks].concat(newTask));
-        setTask("");
+        console.log(newTask)
+        axios
+            .post('http://localhost:9000/tasks/add-task', newTask)
+            .then(response => {
+                console.log(response.data)
+            }).catch(error => console.log(error.message))
+
+
+        
     }
 
 
@@ -123,9 +131,9 @@ const TaskForm = ({ addTask }) => {
                 id='taskPriority' 
                 className='border-2 rounded-md py-2 px-3 active:text-violet-500 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none bg-gray-100 ease-out duration-300 focus:bg-white shadow-md' 
                  >
-                  <option value="low" >Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
+                  <option value="Low" >Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
                 </select>
               </div>
 

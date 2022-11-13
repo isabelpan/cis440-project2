@@ -76,5 +76,33 @@ const createUser = (gInfo, isMentor, dashboardKey=lastDashboardKey) => {
     })       
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////tasks////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+const createTask = (taskInfo) => {
+    console.log('creating task')
+    return new Promise((resolve, reject) => {
+        pool.query("INSERT INTO task (task, description, dashboardKey, completed, deadline, priority) VALUES (?, ?, ?, ?, ?, ?)", [taskInfo.taskTitle, taskInfo.taskDescription, taskInfo.dashboardKey, taskInfo.isComplete, taskInfo.deadlineDate, taskInfo.priority], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })       
+}
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard}
+const getTasks = (dashboardKey) => {
+    console.log('getting tasks')
+    return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM task WHERE dashboardKey = ?", [dashboardKey], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+}
+
+
+
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks}
