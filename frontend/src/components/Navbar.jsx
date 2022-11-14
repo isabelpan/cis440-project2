@@ -41,7 +41,7 @@ const Navbar = () => {
 
   const isLoggedIn = () => {
 
-    if(sessionStorage.length === 1 ){
+    if(sessionStorage.length >= 1 ){
       const user = JSON.parse(sessionStorage.getItem('user_info'));
       console.log(user)
   
@@ -56,7 +56,7 @@ const Navbar = () => {
   }; // end of isLoggedIn func
 
   const logoutFunc = () => {
-    sessionStorage.clear('user_info');
+    sessionStorage.clear();
   
     window.location.reload();
   }; // end of logoutFunc 
