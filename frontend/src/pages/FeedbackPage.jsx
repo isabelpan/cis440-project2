@@ -20,17 +20,15 @@ const FeedbackPage = () => {
                     <FeedbackRequest />
                 </div>
 
-                <div className='w-10/12 float-right'>
-                    <div id='leftContainer' className='pt-2 w-3/5 h-full float-left rounded-lg ml-2 flex flex-col gap-2'>
-                        <div id='feedbackInboxContainer' className='border-3 border-violet-400 rounded-lg p-8 py-8 shadow-xl flex flex-col gap-5 bg-white'>
-                            <FeedbackInbox />
-                        </div>
+                <div className='w-10/12 float-right h-full py-14 pl-10'>
+                    <div id='leftContainer' className='w-3/5 h-full float-left flex flex-col gap-16'>
+                        <FeedbackInbox />
+
                     </div>
 
-                    <div id='rightContainer' className='pt-2 h-full float-right rounded-lg mr-2 flex flex-col gap-2 '>
-                        <div id='toolsContainer' className='place-content-center border-3 border-violet-400 rounded-lg p-8 py-8 shadow-xl flex flex-col gap-5 bg-white'>
-                            <FeedbackTools />
-                        </div>
+                    <div id='rightContainer' className='w-1/3 h-full float-right rounded-lg mr-10 flex flex-col gap-10'>
+                        <FeedbackTools />
+
                     </div>
                 </div>
             </div >
