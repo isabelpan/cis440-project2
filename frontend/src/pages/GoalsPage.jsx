@@ -7,15 +7,20 @@ import axios from 'axios';
 
 
 const GoalsPage = () => {
-  const [userGoalData, setUserGoalData] = useState({});
   const userInfo = JSON.parse(localStorage.getItem('user_info'));
 
   const [percent, setPercent] = useState(50);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [editGoal, setEditGoal] = useState(false);
 
+  const [goalList, setGoalList] = useState([]);
+  const [completedGoals, setCompletedGoals] = useState([]);
+  const [incompleteGoals, setIncompleteGoals] = useState([]);
+
   const status = percent === 100 ? "success" : null;
   const color = percent === 100 ? "#03D613" : "#771be7";
+
+  var userGoals;
   
   const decrease = () => {
     const value =
@@ -29,14 +34,20 @@ const GoalsPage = () => {
       setPercent(value);
   };
 
-  const getAccomplishedGoals = () => {
-    console.log("getting goals");
-    axios.get('./goals').then(response => {setUserGoalData(JSON.parse(JSON.stringify(response.data)));
-    })
-  }
-
   useEffect(() => {
-    getAccomplishedGoals();
+    if(sessionStorage.length >= 1){
+      axios.post('http://localhost:9000/goals/get-goals', userInfo).then(response => {
+        console.log(response.data);
+        sessionStorage.setItem("user_goals", JSON.stringify(response.data));
+
+        userGoals = JSON.parse(sessionStorage.getItem("user_goals"));
+
+        setGoalList(userGoals);
+
+        setCompletedGoals(userGoals.filter((g) => g['completed'] === 1));
+        setIncompleteGoals(userGoals.filter((g) => g['completed'] === 0))
+      }).catch((error) => console.log(error.message));
+    }
   }, []);
 
 
@@ -84,8 +95,8 @@ const GoalsPage = () => {
 
             <div id='accomplishedGoalsList' className='w-full flex flex-col gap-2'>
 
-            {/* {userGoalData.map((data) => {
-                  return ( */}
+            {completedGoals.map((data) => {
+                  return (
                     <div className='border-2 py-1 px-2 rounded-md bg-violet-100 flex flex-row justify-between'>
                       <h1>Goal Title</h1>
                       <button onClick={() => {setEditGoal(true)}}>
@@ -94,14 +105,14 @@ const GoalsPage = () => {
                       <EditGoalForm trigger={editGoal} setTrigger={setEditGoal}/>
                       
                     </div>
-                  {/* )
-                })} */}
+                   )
+                })} 
 
               
             </div>
 
             <div>
-              <button className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-2'>Clear Goals</button>
+              <button className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-2'>Clear Accomplished Goals</button>
             </div>
           </div>
 

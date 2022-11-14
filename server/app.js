@@ -6,9 +6,10 @@ var logger = require('morgan');
 var cors = require("cors")
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var testAPIRouter = require("./routes/testAPI")
-var googleAPIRouter = require("./routes/googleAPI")
-var tasksAPIRouter = require("./routes/tasks")
+var testAPIRouter = require("./routes/testAPI");
+var googleAPIRouter = require("./routes/googleAPI");
+var tasksAPIRouter = require("./routes/tasks");
+var goalsAPIRouter = require('./routes/goals');
 var app = express();
 
 // view engine setup
@@ -24,9 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/testAPI', testAPIRouter)
-app.use('/googleAPI', googleAPIRouter)
-app.use('/tasks', tasksAPIRouter)
+app.use('/testAPI', testAPIRouter);
+app.use('/googleAPI', googleAPIRouter);
+app.use('/tasks', tasksAPIRouter);
+app.use('/goals', goalsAPIRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

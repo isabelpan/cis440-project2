@@ -6,14 +6,17 @@ const GoalForm = (props) => {
 
   const handleSubmit = (e) => {
 
-    const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
+    const userInfo = JSON.parse(sessionStorage.getItem('user_info'));
     console.log(userInfo);
 
     const newGoal = {
       goalTitle: e.target.goalTitle.value,
       goalDescription: e.target.goalDescription.value,
       isComplete: 0,
+      dashboardKey: userInfo.dashboardKey,
     }
+
+    console.log(newGoal);
 
     axios.post('http://localhost:9000/goals/add-goal', newGoal).then(response => {
       console.log(response.data);
@@ -58,7 +61,7 @@ const GoalForm = (props) => {
             <div className='border-b-1 pt-4 border-gray-300'></div>
 
           <div className='flex flex-col'>
-            <button className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-5'>Create Goal</button>
+            <button type='submit' className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-5'>Create Goal</button>
           </div>
         </form>
         

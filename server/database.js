@@ -10,8 +10,6 @@ const pool = mysql.createPool({
 })
 
 
-
-
 const getAllUsers = () => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM user', (err, results) => {
@@ -104,10 +102,10 @@ const getTasks = (dashboardKey) => {
 }
 
 
-const createGoal = (goalData) => {
-    console.log("Creating new task...");
+const addGoal = (goalData) => {
+    console.log("Creating new goal...");
     return new Promise((resolve, reject) => {
-        pool.query("INSERT INTO goal (goalTitle, description, dashboardKey, completed) VALUE (?, ?, ?, ?)", [goalData.goalTitle, goalData.goalDescription, goalData.dashboardKey, goalData.isComplete], (err, results) => {
+        pool.query("INSERT INTO goal (goalTitle, goalDescription, dashboardKey, completed) VALUE (?, ?, ?, ?)", [goalData.goalTitle, goalData.goalDescription, goalData.dashboardKey, goalData.isComplete], (err, results) => {
             if(err){
                 return reject(err)
             }
@@ -119,7 +117,7 @@ const createGoal = (goalData) => {
 const getGoals = (dashboardKey) => {
     console.log('Getting goals...');
     return new Promise((resolve, reject) => {
-        pool.query("SELECT * FROM goals WHERE dashboardKey = ?", [dashboardKey], (err, results) => {
+        pool.query("SELECT * FROM goal WHERE dashboardKey = ?", [dashboardKey], (err, results) => {
             if(err){
                 return reject(err)
             }
@@ -129,4 +127,11 @@ const getGoals = (dashboardKey) => {
 }
 
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, createGoal, getGoals}
+// const updateGoal = (dashboardKey) => {
+//     console.log('Updating goal...');
+//     return new Promise((resolve, reject) => {
+//         pool.query("UPDATE")
+//     })
+// }
+
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals}

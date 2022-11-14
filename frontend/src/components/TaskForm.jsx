@@ -6,36 +6,10 @@ const TaskForm = ( ) => {
     const inputContainer = 'flex flex-col gap-1';
     const taskHeader = 'text-3xl text-violet-700 font-bold';
     
-    // const [userInput, setUserInput] = useState('');
 
-    // const [taskTitle, setTaskTitle] = useState('');
-    // const [taskDescription, setTaskDescription] = useState('');
-    // const [priority, setPriority] = useState('');
-    // const [deadlineDate, setDeadlineDate] = useState('');
-
-    const [tasks, setTasks] = useState([]);
-    const [task, setTask] = useState("");
-    const [taskEditing, setTaskEditing] = useState(null);
-    const [editingText, setEditingText] = useState("");
-
-
-
-    // const taskValues = {
-    //     taskTitle: "",
-    //     taskDescription: "",
-    //     deadlineDate: "",
-    //     priority: "",
-    //     isComplete: false,
-    //   };
-
-    // const handleChange = (e) => {
-    //     setUserInput(e.currentTarget.value);
-    // }
 
     const handleSubmit = (e) => {
         // e.preventDefault();
-        // addTask(userInput);
-        // setUserInput('');
 
         const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
         console.log(userInfo)
@@ -60,30 +34,6 @@ const TaskForm = ( ) => {
         
     }
 
-
-    const toggleComplete = (id) => {
-      let updatedTasks = [...tasks].map((task) => {
-        if(task.id === id) {
-          task.completed = !task.completed;
-        }
-        return task;
-      });
-      setTasks(updatedTasks);
-    }
-
-    const editTask = (id) => {
-      const updatedTasks = [...tasks].map((task) => {
-        if(task.id === id){
-          
-        }
-        return task;
-      });
-      setTasks(updatedTasks);
-      
-    }
-
-    
-    // const [newTask, setNewTask] = useState(taskValues);
 
   return (
     <div>
