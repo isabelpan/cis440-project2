@@ -145,7 +145,6 @@ const TasksPage = () => {
   const deadlineSort = (tasks) => {
     console.log('deadline sorting')
     var tasks = incompleteTasks
-
     tasks.sort((a, b) => {
       return new Date(a.deadline) - new Date(b.deadline)
     })

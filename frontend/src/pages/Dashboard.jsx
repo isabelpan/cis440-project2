@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { Calendar, Navbar, Sidebar } from '../components';
 import { FaShareSquare } from 'react-icons/fa';
+import DashboardKeyModal from '../components/DashboardKeyModal';
+import axios from 'axios';
+import TasksSummary from '../components/TasksSummary';
 
 
 const Dashboard = () => {
+
+  const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
+
+
+
+
+  const [buttonPopup, setButtonPopup] = useState(false);
+
   var date = new Date();
   const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -12,6 +23,8 @@ const Dashboard = () => {
   const shareDashboardLink = () => {
 
   }
+
+
 
   return (
     <div>
@@ -33,45 +46,34 @@ const Dashboard = () => {
           <div id='dashboardHeaderContainer' className='flex flex-row justify-between border-b-1 pb-2 border-gray-300'>
 
           <div id='welcomeDateContainer' className='gap-1 flex flex-col'> 
-            <h1 className='font-bold text-4xl text-violet-700'>Welcome Back</h1>
+            <h1 className='font-bold text-4xl text-violet-700'>Welcome Back {userInfo?.fname}</h1>
             <h1 className='text-xl font-bold text-gray-500'>Today is {today} </h1>
           </div>
 
           <div id='shareDashboardContainer' className='flex flex-row gap-1 text-violet-600 hover:cursor-pointer hover:text-violet-900 ease-out duration-300 pt-12'>
-            <button type='button' onClick={shareDashboardLink}>Share your dashboard</button>
-            <FaShareSquare className='text-xl'/>
-          </div>
+            <button onClick={() => { setButtonPopup(true)}} type='button'>Share your dashboard</button>
+            <DashboardKeyModal trigger={buttonPopup} setTrigger={setButtonPopup}/>          </div>
          </div>
 
-          <div id='calendarContainer' className='text-gray-400 w-full flex px-4 border-3 border-violet-400 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white'>
-            <h1>A glance at your week</h1>
-            <Calendar />
-          </div>
-
-          <div id='bottomContainer' className='flex flex-row gap-8 justify-between'>
-            <div id='upcomingTasksContainer' className='text-gray-400 border-3 border-violet-400 py-2 px-3 flex flex-col w-1/4 rounded-lg shadow-lg bg-white'>
-            <h1>Your Upcoming Tasks</h1>
-
+          <div id='containerContainer' className='flex flex-row'>
+            <div id='tasksContainer' className='text-gray-400 w-7/12 flex px-4 border-3 border-violet-400 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white mx-2'>
+              <TasksSummary/>
             </div>
-
-            <div id='goalsContainer' className='text-gray-400 border-3 border-violet-400 py-2 px-3 rounded-lg w-1/4 shadow-lg bg-white flex flex-col'>
-              <div>
-                <h1>A Glance At Your Goals</h1>
+            
+            <div className='text-gray-400 w-5/12 flex px-4 border-3 border-violet-100 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white'>
+              <div className='text-gray-400 w-fill flex px-4 border-3 border-violet-300 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white h-3/4 text-wrap'>
+                  <p>Goals Progress Bar</p>
+              </div>
+              <div className='text-gray-400 w-fill flex px-4 border-3 border-violet-300 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white h-1/4'>
+                  <p>how many unread messages</p>
               </div>
 
-              <div>
-                Your Progress
-              </div>
-              
-
             </div>
-
-            <div className='text-gray-400 border-3 border-violet-400 py-2 px-3 rounded-lg w-1/4 shadow-lg bg-white flex flex-col'>
-              <h1>Recent Feedback</h1>
-            </div>
-
+            
 
           </div>
+
+          
           
 
         </div>
