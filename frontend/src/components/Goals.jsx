@@ -10,7 +10,7 @@ const NewGoal = ({ goalTitle, goalDescription }) => {
   const color = percent === 100 ? "#03D613" : "#771be7";
 
   const increase = () => {
-    const value =
+    const value =r
         Math.min(percent + 10, 100);
     setPercent(value);
 };

@@ -6,3 +6,7 @@ export { default as TaskForm } from './TaskForm';
 export { default as Goals } from './Goals';
 export { default as GoalForm } from './GoalForm';
 export { default as EditGoalForm } from './EditGoalForm';
+export { default as FeedbackRequest } from './FeedbackRequest';
+export { default as FeedbackTools } from './FeedbackTools';
+export { default as FeedbackForm } from './FeedbackForm';
+export { default as FeedbackInbox } from './FeedbackInbox';
