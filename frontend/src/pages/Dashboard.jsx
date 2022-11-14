@@ -29,7 +29,7 @@ const Dashboard = () => {
 
       <div id='pageContainer' className='w-10/12 float-right py-14 px-10'>
 
-        <div className='flex flex-col gap-12'>
+        <div className='flex flex-col gap-10'>
           <div id='dashboardHeaderContainer' className='flex flex-row justify-between border-b-1 pb-2 border-gray-300'>
 
           <div id='welcomeDateContainer' className='gap-1 flex flex-col'> 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MdSettingsBackupRestore } from 'react-icons/md';
 import { Navbar, Sidebar, TaskForm, TaskList } from '../components';
 
+
 const TasksPage = () => {
   const inputField = 'border-2 rounded-md px-3 py-2 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none text-gray-700 max-h-24 bg-gray-100 focus:bg-white ease-out duration-300 shadow-md';
   const inputContainer = 'flex flex-col gap-1';
@@ -68,7 +69,7 @@ const TasksPage = () => {
             </div>
             
             <div id='completedTasksListContainer' className='flex flex-col gap-5 line-through text-violet-300 hover'>
-              
+
               <div className='border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-100 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0'>
                 <h1>Create resume</h1>
               </div>
