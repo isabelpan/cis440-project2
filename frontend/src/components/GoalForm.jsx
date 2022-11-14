@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { AiOutlineCloseCircle, AiOutlineZoomIn } from 'react-icons/ai';
+import React from 'react';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import axios from 'axios';
 
 const GoalForm = (props) => {

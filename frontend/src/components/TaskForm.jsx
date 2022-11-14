@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import Tasks from './Tasks';
 
 const TaskForm = ( ) => {
     const inputField = 'border-2 rounded-md px-3 py-2 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none text-gray-700 max-h-24 bg-gray-100 focus:bg-white ease-out duration-300 shadow-md';

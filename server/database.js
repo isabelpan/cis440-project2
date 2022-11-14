@@ -104,5 +104,29 @@ const getTasks = (dashboardKey) => {
 }
 
 
+const createGoal = (goalData) => {
+    console.log("Creating new task...");
+    return new Promise((resolve, reject) => {
+        pool.query("INSERT INTO goal (goalTitle, description, dashboardKey, completed) VALUE (?, ?, ?, ?)", [goalData.goalTitle, goalData.goalDescription, goalData.dashboardKey, goalData.isComplete], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+}
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks}
+const getGoals = (dashboardKey) => {
+    console.log('Getting goals...');
+    return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM goals WHERE dashboardKey = ?", [dashboardKey], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+}
+
+
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, createGoal, getGoals}

@@ -41,8 +41,6 @@ const TasksPage = () => {
 
   }, [])
 
-  
-
 
 
   const checkView = (task={}) => {

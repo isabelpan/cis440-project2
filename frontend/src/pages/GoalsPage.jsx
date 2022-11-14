@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Sidebar, Goals, GoalForm } from '../components';
+import { Navbar, Sidebar, Goals, GoalForm, EditGoalForm } from '../components';
 import { HiPlus } from 'react-icons/hi';
 import { FaEdit } from 'react-icons/fa';
 import { Progress, ButtonGroup, Button } from 'rsuite';
@@ -12,6 +12,7 @@ const GoalsPage = () => {
 
   const [percent, setPercent] = useState(50);
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [editGoal, setEditGoal] = useState(false);
 
   const status = percent === 100 ? "success" : null;
   const color = percent === 100 ? "#03D613" : "#771be7";
@@ -87,9 +88,10 @@ const GoalsPage = () => {
                   return ( */}
                     <div className='border-2 py-1 px-2 rounded-md bg-violet-100 flex flex-row justify-between'>
                       <h1>Goal Title</h1>
-                      <button>
+                      <button onClick={() => {setEditGoal(true)}}>
                         <FaEdit className='text-gray-500' />
                       </button>
+                      <EditGoalForm trigger={editGoal} setTrigger={setEditGoal}/>
                       
                     </div>
                   {/* )

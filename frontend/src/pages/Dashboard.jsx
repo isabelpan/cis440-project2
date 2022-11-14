@@ -1,5 +1,5 @@
 import React from 'react'
-import { Calendar, Navbar, Sidebar, Tasks } from '../components';
+import { Calendar, Navbar, Sidebar } from '../components';
 import { FaShareSquare } from 'react-icons/fa';
 
 
@@ -51,7 +51,7 @@ const Dashboard = () => {
           <div id='bottomContainer' className='flex flex-row gap-8 justify-between'>
             <div id='upcomingTasksContainer' className='text-gray-400 border-3 border-violet-400 py-2 px-3 flex flex-col w-1/4 rounded-lg shadow-lg bg-white'>
             <h1>Your Upcoming Tasks</h1>
-            <Tasks />
+
             </div>
 
             <div id='goalsContainer' className='text-gray-400 border-3 border-violet-400 py-2 px-3 rounded-lg w-1/4 shadow-lg bg-white flex flex-col'>
