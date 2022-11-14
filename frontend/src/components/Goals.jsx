@@ -15,7 +15,7 @@ const NewGoal = () => {
 
 
   const increase = () => {
-    const value =
+    const value =r
         Math.min(percent + 10, 100);
     setPercent(value);
 };
