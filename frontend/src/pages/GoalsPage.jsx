@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Sidebar, Goals, GoalForm } from '../components';
 import { HiPlus } from 'react-icons/hi';
+import { FaEdit } from 'react-icons/fa';
 import { Progress, ButtonGroup, Button } from 'rsuite';
 import axios from 'axios';
 
@@ -36,6 +37,7 @@ const GoalsPage = () => {
   useEffect(() => {
     getAccomplishedGoals();
   }, []);
+
 
   return (
     <div>
@@ -74,15 +76,26 @@ const GoalsPage = () => {
 
         <div className='flex flex-row mt-10 w-full justify-between gap-20'>
 
-          <div id='accomplishedGoalsContainer' className='w-1/2 flex flex-col gap-6 border-2 py-5 px-10 rounded-xl border-violet-300 shadow-lg'>
+          <div id='accomplishedGoalsContainer' className='w-1/2 flex flex-col gap-6 border-2 py-5 px-10 rounded-xl border-violet-300 shadow-lg justify-between'>
             <div className='text-violet-600 text-3xl font-bold'>
               <h1>Goals You Have Accomplished</h1>
             </div>
 
             <div id='accomplishedGoalsList' className='w-full flex flex-col gap-2'>
-              <div className='border-2 py-1 px-2 rounded-md bg-violet-100'>
-                goal
-              </div>
+
+            {/* {userGoalData.map((data) => {
+                  return ( */}
+                    <div className='border-2 py-1 px-2 rounded-md bg-violet-100 flex flex-row justify-between'>
+                      <h1>Goal Title</h1>
+                      <button>
+                        <FaEdit className='text-gray-500' />
+                      </button>
+                      
+                    </div>
+                  {/* )
+                })} */}
+
+              
             </div>
 
             <div>

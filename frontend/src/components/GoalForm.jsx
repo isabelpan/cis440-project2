@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { AiOutlineCloseCircle, AiOutlineZoomIn } from 'react-icons/ai';
 import axios from 'axios';
 
 const GoalForm = (props) => {
-  const [goalTitle, setGoalTitle] = useState('');
-  const [goalDescription, setGoalDescription] = useState('');
 
-  console.log(goalTitle + goalDescription);
+  const handleSubmit = (e) => {
 
+    const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
+    console.log(userInfo);
 
-  const createGoal = async () => {
-    axios.post();
-  }
+    const newGoal = {
+      goalTitle: e.target.goalTitle.value,
+      goalDescription: e.target.goalDescription.value,
+      isComplete: 0,
+    }
 
+    axios.post('http://localhost:9000/goals/add-goal', newGoal).then(response => {
+      console.log(response.data);
+    }).catch(error => console.log(error.message));
+
+  };
 
 
   const inputField = 'border-2 rounded-md px-3 py-1 focus:ring-1 focus:ring-violet-500 focus:border-violet-500 focus:outline-none text-gray-700 max-h-24 bg-gray-100 focus:bg-white ease-out duration-300 shadow-md text-lg';
@@ -25,7 +32,7 @@ const GoalForm = (props) => {
           <h1>New Goal</h1>
         </div>
 
-        <form className='flex flex-col gap-3'>
+        <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
           <div className={inputContainer}>
             <label htmlFor='goalTitle' className='text-lg'>Goal Title</label>
             <input 
@@ -33,7 +40,7 @@ const GoalForm = (props) => {
               name='goalTitle' 
               id='goalTitle'
               className={inputField}
-              onChange={(e) => {setGoalTitle(e.target.value)}}
+              
              />
           </div>
 
@@ -44,14 +51,14 @@ const GoalForm = (props) => {
                   name='goalDescription' 
                   id='goalDescription' 
                   className={inputField} 
-                  onChange={(e) => {setGoalDescription(e.target.value)}}
+                  
                 />
               </div>
             
             <div className='border-b-1 pt-4 border-gray-300'></div>
 
           <div className='flex flex-col'>
-            <button className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-5' onClick={createGoal}>Create Goal</button>
+            <button className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-5'>Create Goal</button>
           </div>
         </form>
         
