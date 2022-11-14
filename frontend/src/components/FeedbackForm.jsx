@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FeedbackForm = () => {
+const FeedbackForm = (props) => {
 
     return (
         <div>

@@ -1,31 +1,8 @@
 import React, { useState } from 'react';
-import { Navbar, Sidebar, FeedbackRequest, FeedbackInbox } from '../components';
-import { usePopper } from 'react-popper';
-
-
+import { Navbar, Sidebar, FeedbackRequest, FeedbackInbox, FeedbackTools } from '../components';
+// import { usePopper } from 'react-popper';
 
 const FeedbackPage = () => {
-
-
-    const [users, setUsers] = useState([
-        {
-            name: 'Tony Stark',
-            subject: 'Complete the Security Training!',
-            body: 'Hi, please complete this training ASAP',
-        },
-        {
-            name: 'Batman',
-            subject: 'Feedback on Latest Training Module',
-            body: 'Hello, you did a poor job on the your recent training module. Try again',
-        },
-    ]);
-
-    const handlechange = (index) => {
-        const newUsers = [...users];
-        newUsers[index].name = 'New Name';
-        newUsers[index].rollNo = 'New RollNo';
-        setUsers(newUsers);
-    };
 
 
     return (

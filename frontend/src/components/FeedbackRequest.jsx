@@ -10,11 +10,12 @@ const FeedbackRequest = () => {
 
     const [showWidget, setShowWidget] = useState(false);
     const [showMessage, setShowMessage] = useState(false);
-    // const onClick = () => setShowMessage(true);
+    const onClick = () => setShowMessage(true);
 
     const Message = () => {
-        window.alert("Feedback request sent! We'll let you know when your mentor responds.");
-
+        <div id="message">
+            Feedback request sent! We'll let you know when your mentor responds.
+        </div>
     }
 
     return (
