@@ -25,7 +25,6 @@ const GoalsPage = () => {
 
   var userGoals;
 
-
   
   const decrease = () => {
     const value =
@@ -55,12 +54,12 @@ const GoalsPage = () => {
     }
   }, []);
 
-
   const Goals = () => {
     return(
+      <div id='goalsContainer' className='flex flex-row gap-8'>
+        {incompleteGoals.map((goal) => (
           <div className='flex flex-col gap-3 w-1/5 border-2 border-violet-700 rounded-lg p-4 hover:scale-105 ease-in-out duration-300 max-w-screen-sm'>
-            <div>
-              <div>
+              <div id='goalHeader'>
                 <div className='border-b-1 border-gray-300 flex flex-row w-full items-center'>
                   <div className='text-2xl text-violet-800 font-bold flex w-1/2'>
                     <h1>TITLE</h1>
@@ -75,19 +74,19 @@ const GoalsPage = () => {
                 </div>
               </div>
               
-              <div className='text-lg'>
+              <div id='goalDescription' className='text-lg'>
                   {incompleteGoals.goalDescription}
               </div>
 
-              <div className='flex justify-around'>
+              <div id='completeGoalBtn' className='flex justify-around'>
                 <ButtonGroup>
                   <Button onClick={increase} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</Button>
                 </ButtonGroup>
               </div>
-
           </div>
-
-        </div>
+        ))}
+          
+      </div>
 
     )
   }
@@ -121,9 +120,8 @@ const GoalsPage = () => {
             </div>
           </div>
 
-          <div id='goalsContainer' className='flex flex-row gap-8'>
-            <Goals />          
-          </div>
+          <Goals />          
+
 
         </div>
 
