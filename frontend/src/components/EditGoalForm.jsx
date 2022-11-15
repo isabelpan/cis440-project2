@@ -27,8 +27,8 @@ const EditGoalForm = (props, title, description) => {
     // }, [])
 
   return (props.trigger) ? (
-    <div id='popup' className='w-full fixed top-0 left-0 h-screen bg-gray-400/75 opacity-75 flex justify-center items-center text-violet-600'>
-        <div id='innerPopup' className='relative p-8 w-full max-w-screen-sm bg-white rounded-lg flex flex-col gap-6'>
+    <div id='popup' className='w-full fixed top-0 left-0 h-screen bg-gray-500/75 flex justify-center items-center text-violet-600'>
+        <div id='innerPopup' className='relative p-8 w-full max-w-screen-sm bg-white rounded-lg  flex flex-col gap-6'>
         
         <div className='font-bold text-3xl'>
             <h1>Edit Goal</h1>
@@ -36,21 +36,21 @@ const EditGoalForm = (props, title, description) => {
 
         <form className='flex flex-col gap-3' >
           <div className={inputContainer}>
-            <label htmlFor='goalTitle' className='text-lg'>Goal Title</label>
+            <label htmlFor='editGoalTitle' className='text-lg'>Goal Title</label>
             <input 
               type='text' 
-              name='goalTitle' 
-              id='goalTitle'
+              name='editGoalTitle' 
+              id='editGoalTitle'
               className={inputField}
              />
           </div>
 
           <div className={inputContainer}>
-                <label htmlFor='goalDescription'className='text-lg'>Goal Description</label>
+                <label htmlFor='editGoalDescription'className='text-lg'>Goal Description</label>
                 <textarea 
                   type='text' 
-                  name='goalDescription' 
-                  id='goalDescription' 
+                  name='editGoalDescription' 
+                  id='editGoalDescription' 
                   className={inputField} 
                 />
               </div>
@@ -62,7 +62,7 @@ const EditGoalForm = (props, title, description) => {
           </div>
         </form>
 
-        <button onClick={() => {props.setTrigger(false)}} className='absolute top-4 right-4 hover:'><AiOutlineCloseCircle className='text-2xl'/></button>
+        <button onClick={() => {props.setTrigger(false)}} className='absolute top-4 right-4'><AiOutlineCloseCircle className='text-2xl'/></button>
         { props.children }
 
         </div>

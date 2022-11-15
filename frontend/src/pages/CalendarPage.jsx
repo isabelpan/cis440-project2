@@ -75,6 +75,8 @@ const CalendarPage = () => {
               view='month'
               calendars={calendars}
               events={initialEvents}
+              useFormPopup={true}
+              useDetailPopup={true}
               />
           </div>
 

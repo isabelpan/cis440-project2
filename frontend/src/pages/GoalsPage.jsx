@@ -89,12 +89,13 @@ const GoalsPage = () => {
               <div id='goalHeader'>
                 <div className='border-b-1 border-gray-300 flex flex-row w-full items-center'>
                   <div className='text-xl text-violet-800 font-bold flex w-full'>
-                    <h1>{goal['goalTitle']}</h1>
+                    <h1 className='capitalize'>{goal['goalTitle']}</h1>
                   </div>
+
                   <div className='flex flex-row ease-out duration-300'>
                     <button type='button' onClick={() => {setEditGoal(true); setCurrentGoal(goal)}}>
                         <FaEdit className='text-gray-500' />
-                      </button>
+                    </button>
                     <EditGoalForm trigger={editGoal} setTrigger={setEditGoal} />
                     </div>
                 </div>
@@ -106,7 +107,7 @@ const GoalsPage = () => {
 
               <div id='completeGoalBtn' className='block text-center'>
                 <ButtonGroup>
-                  <Button onClick={() => {completeGoal(); increase()}} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</Button>
+                  <Button onClick={() => {completeGoal(currentGoal); increase()}} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</Button>
                 </ButtonGroup>
               </div>
           </div>
@@ -162,12 +163,9 @@ const GoalsPage = () => {
 
             {completedGoals.map((goal) => {
                   return (
-                    <div className='border-2 py-1 px-2 rounded-md bg-violet-100 flex flex-row justify-between'>
-                      <h1>{goal['goalTitle']}</h1>
-                      {/* <button type='button' onClick={() => {setEditGoal(true); setCurrentGoal(goal)}}>
-                        <FaEdit className='text-gray-500' />
-                      </button>
-                    <EditGoalForm trigger={editGoal} setTrigger={setEditGoal} /> */}
+                    <div className='border-2 py-1 px-2 rounded-md bg-violet-100 flex flex-row justify-between text-violet-400 line-through'>
+                      <h1 className='capitalize'>{goal['goalTitle']}</h1>
+
                     </div>
                    )
                 })} 
@@ -187,7 +185,7 @@ const GoalsPage = () => {
 
             <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-md border-violet-800' >
 
-              <h1>{goalCount}</h1>
+              <h1></h1>
                 <Progress.Circle percent={percent} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/>
 
 

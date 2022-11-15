@@ -195,7 +195,7 @@ const TasksPage = () => {
               
             <div>
                 {completedTasks.map((task) => (
-                  <button className='block mb-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-100 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0 line-through w-full text-left' onClick={() => {setCurrentTask(task);}}><p>{task['task']}</p></button>
+                  <button className='block mb-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-100 shadow-md ease-out duration-300 hover:decoration-0 line-through w-full text-left' onClick={() => {setCurrentTask(task);}}><p>{task['task']}</p></button>
                 ))} 
               </div> 
             </div>

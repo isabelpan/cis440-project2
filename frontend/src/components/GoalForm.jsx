@@ -65,7 +65,7 @@ const GoalForm = (props) => {
           </div>
         </form>
         
-        <button onClick={() => {props.setTrigger(false)}} className='absolute top-4 right-4 hover:'><AiOutlineCloseCircle className='text-2xl'/></button>
+        <button onClick={() => {props.setTrigger(false)}} className='absolute top-4 right-4'><AiOutlineCloseCircle className='text-2xl'/></button>
         { props.children }
       </div>
     </div>

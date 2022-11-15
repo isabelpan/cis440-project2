@@ -7,9 +7,8 @@ import Modal from '../pages/LoginModal';
 
 const LoggedInContainer = ({ username, customFunc }) => {
   return(
-    <div className='flex flex-col pr-2'>
+    <div className='flex flex-col pr-2 items-center'>
       <div className='flex pt-2 text-xl gap-2 text-violet-600'>
-        <FaUserAlt className='mt-1 text-lg'/>
         <h1 className='font-bold'>{username}</h1>
       </div>
 
