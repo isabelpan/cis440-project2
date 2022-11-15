@@ -72,6 +72,16 @@ const GoalsPage = () => {
   }, []);
 
   const Goals = () => {
+
+    const completeGoal = (goal) => {
+      console.log(goal + 'Marking goal as complete.');
+  
+      axios.post('http://localhost:9000/goals/complete-goal', goal).then(response => {
+        console.log(response.data);
+      }).catch(error => console.log(error.message));
+    }
+
+
     return(
       <div id='goalsContainer' className='flex flex-row gap-4'>
         {incompleteGoals.map((goal) => (
@@ -96,7 +106,7 @@ const GoalsPage = () => {
 
               <div id='completeGoalBtn' className='block text-center'>
                 <ButtonGroup>
-                  <Button onClick={increase} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</Button>
+                  <Button onClick={() => {completeGoal(); increase()}} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</Button>
                 </ButtonGroup>
               </div>
           </div>

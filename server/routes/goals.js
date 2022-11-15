@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { addGoal, getGoals, getGoalCount } = require('../database');
+const { addGoal, getGoals, getGoalCount, completeGoal } = require('../database');
 
 router.post('/add-goal', async (req, res) => {
     console.log("Adding new goal...");
@@ -34,6 +34,13 @@ router.post('/get-goalCount', async (req, res) => {
 //     res.send(updatedGoal);
 
 // })
+
+router.post('/complete-goal', async(req, res) => {
+    console.log(req.body);
+    let goal = req.body;
+
+    let status = await completeGoal(goal.goalId);
+})
 
 
 module.exports = router;

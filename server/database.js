@@ -169,14 +169,23 @@ const getGoalCount = (dashboardKey) => {
     })
 }
 
+const completeGoal = (goalId) => {
+    console.log('Marking goal as complete...');
+    return new Promise((resolve, reject) => {
+        pool.query("UPDATE goal SET completed = 1 WHERE goalId = ?", [goalId], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
 
-<<<<<<< HEAD
-// const updateGoal = (dashboardKey, goalData) => {
-=======
+}
+
+
 
 
 // const updateGoal = (dashboardKey) => {
->>>>>>> 14613c38ef9d2525bf1f5c8b33a3789afe04ec23
 //     console.log('Updating goal...');
 //     return new Promise((resolve, reject) => {
 //         pool.query("UPDATE goal SET goalTitle = ?, goalDescription = ?, WHERE dashboardKey = ?", [goalData.goalTitle, goalData.goalDescription, dashboardKey], (err, results) => {
@@ -188,4 +197,4 @@ const getGoalCount = (dashboardKey) => {
 //     })
 // }
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount, completeTasks, addFeedback}
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount, completeTasks, addFeedback, completeGoal}
