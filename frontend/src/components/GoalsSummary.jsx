@@ -26,10 +26,10 @@ const GoalsSummary = () => {
 
             console.log('userGoals')
             console.log(userGoals)
+            setGoalList(userGoals)
     
             setCompletedGoals(userGoals.filter((g) => g['completed'] === '1'));
-            setIncompleteGoals(userGoals.filter((g) => g['completed'] === '0'))
-            calculatePrecent()
+            setIncompleteGoals(userGoals.filter((g) => g['completed'] === '0'));
           }).catch((error) => console.log(error.message));
         }
       }, []);
@@ -43,14 +43,15 @@ const GoalsSummary = () => {
         const total = completedGoals.length + incompleteGoals.length
         console.log('total')
         console.log(total)
-        console.log(Math.floor((completedGoals.length / total * 100)))
-        setPercent(Math.floor((completedGoals.length / total * 100)))
+
+        return Math.floor((completedGoals.length / total * 100))
+
       }
 
 
     return(
         <div>
-            <Progress.Circle percent={percent} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/>
+            <Progress.Circle percent={calculatePrecent()} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/>
         </div>
     )
 
