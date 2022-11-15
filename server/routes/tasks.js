@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { google } = require('googleapis');
+const { tasks } = require('googleapis/build/src/apis/tasks');
 const request = require('request')
-const {createTask, getTasks} = require('../database')
+const {createTask, getTasks, completeTasks} = require('../database')
 
 
 router.post('/add-task', async (req, res) => {
@@ -18,6 +19,15 @@ router.post('/get-tasks', async (req, res) => {
     let tasks = await getTasks(req.body.dashboardKey)
     console.log(tasks)
     res.send(tasks)
+
+})
+
+router.post('/complete-tasks', async (req, res) => {
+    console.log(req.body)
+    let task = req.body
+    
+    let status = await completeTasks(task.taskId)
+
 
 })
 

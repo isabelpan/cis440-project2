@@ -102,6 +102,24 @@ const getTasks = (dashboardKey) => {
 }
 
 
+const completeTasks = (taskId) => {
+    console.log('completing tasks in db')
+    return new Promise((resolve, reject) => {
+        pool.query("UPDATE task SET completed = 1 WHERE taskId = ?", [taskId], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+
+}
+
+
+
+
+
+
 const addGoal = (goalData) => {
     console.log("Creating new goal...");
     return new Promise((resolve, reject) => {
@@ -147,4 +165,4 @@ const getGoalCount = (dashboardKey) => {
 //     })
 // }
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount}
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount, completeTasks}
