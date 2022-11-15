@@ -62,19 +62,12 @@ const GoalsPage = () => {
     return(
       <div id='goalsContainer' className='flex flex-row gap-4'>
         {incompleteGoals.map((goal) => (
-          <div className='flex flex-col gap-3 w-1/5 border-2 border-violet-700 rounded-lg p-4 hover:scale-105 ease-in-out duration-300 max-w-screen-sm max-w-1/5'>
+          <div className='flex flex-col gap-3 w-1/5 border-2 border-violet-600 rounded-lg p-4 hover:scale-105 ease-in-out duration-300 max-w-screen-sm max-w-1/5'>
               <div id='goalHeader'>
                 <div className='border-b-1 border-gray-300 flex flex-row w-full items-center'>
                   <div className='text-xl text-violet-800 font-bold flex w-full'>
                     <h1 className='capitalize'>{goal['goalTitle']}</h1>
                   </div>
-
-                  {/* <div className='flex flex-row ease-out duration-300'>
-                    <button type='button' onClick={() => {setEditGoal(true); setCurrentGoal(goal)}}>
-                        <FaEdit className='text-gray-500' />
-                    </button>
-                    <EditGoalForm trigger={editGoal} setTrigger={setEditGoal} />
-                    </div> */}
                 </div>
               </div>
               
