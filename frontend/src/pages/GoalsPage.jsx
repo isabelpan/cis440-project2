@@ -127,7 +127,7 @@ const GoalsPage = () => {
               <h1>Goals You Have Accomplished</h1>
             </div>
 
-            <div id='accomplishedGoalsList' className='w-full max-h-44 flex flex-col gap-2 overflow-auto'>
+            <div id='accomplishedGoalsList' className='w-full max-h-44 flex flex-col gap-2 overflow-auto rounded-lg'>
 
             {completedGoals.map((goal) => {
                   return (
