@@ -39,12 +39,12 @@ const FeedbackTab = ({feedback}) => {
 
     return (
         
-                <div className="border-2 border-violet-100 rounded-md py-1 px-2 bg-grey-100 shadow-md my-2">
-                    <div id="feedback1" className="">
-                        <h2 className="text-bold text-xl">Feedback on: {feedback.feedbackTask}</h2>
+                <div className="border-2 border-gray-200 rounded-md py-1 px-2 bg-grey-100 shadow-md my-2 text-gray-700">
+                    <div id="feedback1" className=" flex flex-col px-2 py-2">
+                        <h2 className="text-bold text-xl font-bold ">Feedback on: {feedback.feedbackTask}</h2>
                         <p className="text-bold text-md">Subj: {feedback.subjectLine}</p>
                         <div className="collapsible">
-                            <div className="text-right font-bold text-sm" {...getToggleProps()}>
+                            <div className="text-right font-bold text-sm text-gray-500" {...getToggleProps()}>
                                 {isExpanded ? 'Collapse' : 'Expand'}
                             </div>
                             <div {...getCollapseProps()}>
@@ -104,9 +104,9 @@ const FeedbackInbox = () => {
 
       
     return (
-        <div id='feedbackInboxContainer' className='border-3 border-violet-400 rounded-lg px-8 py-8 shadow-xl flex flex-col gap-5 bg-white\'>
+        <div id='feedbackInboxContainer' className='border-3 border-violet-400 rounded-lg px-8 py-8 shadow-xl flex flex-col gap-2 bg-white'>
             {checkMentor()}
-            <div id="allFeedbackContainer">
+            <div id="allFeedbackContainer" className='flex flex-col gap-2'>
                 {unreadFeedback.map((f) => (<FeedbackTab feedback={f}/>))}
 
 

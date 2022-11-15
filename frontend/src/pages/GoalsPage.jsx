@@ -134,7 +134,7 @@ const GoalsPage = () => {
 
       <div id='pageContainer' className='w-10/12 float-right py-14 px-10 h-full'>
 
-        <div className='flex flex-col gap-7 border-2 border-violet-300 py-5 px-10 rounded-xl shadow-lg h-1/2'>
+        <div className='flex flex-col gap-7 border-3 border-violet-300 py-5 px-10 rounded-xl shadow-lg h-1/2'>
           <div className='flex flex-row h-1/2 w-full items-center pb-2 justify-between '>
             <div className='text-violet-600 font-bold text-3xl'>
               <h1>Current Goals</h1>
@@ -154,7 +154,7 @@ const GoalsPage = () => {
 
         <div className='flex flex-row mt-10 w-full justify-between gap-20 h-1/2'>
 
-          <div id='accomplishedGoalsContainer' className='w-1/2 flex flex-col gap-6 border-2 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
+          <div id='accomplishedGoalsContainer' className='w-1/2 flex flex-col gap-6 border-3 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
             <div className='text-violet-600 text-3xl font-bold'>
               <h1>Goals You Have Accomplished</h1>
             </div>
@@ -178,7 +178,7 @@ const GoalsPage = () => {
             </div>
           </div>
 
-          <div id='progressContainer' className='w-1/2 flex flex-col gap-6 border-2 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
+          <div id='progressContainer' className='w-1/2 flex flex-col gap-6 border-3 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
             <div className='text-violet-600 text-3xl font-bold'>
               <h1>Your Progress</h1>
             </div>
