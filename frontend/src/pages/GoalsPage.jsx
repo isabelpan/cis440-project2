@@ -76,7 +76,7 @@ const GoalsPage = () => {
               </div>
 
               <div id='completeGoalBtn' className='block text-center'>
-                  <button onClick={() => {completeGoal(currentGoal)}} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</button>
+                  <button onClick={() => {completeGoal(goal)}} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</button>
               </div>
           </div>
         ))}
