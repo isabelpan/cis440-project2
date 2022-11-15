@@ -19,7 +19,7 @@ const FeedbackPage = () => {
                     </div>
     
     
-                    <div className='w-10/12 float-right h-full py-3 pl-10'>
+                    <div className='w-10/12 float-right h-full py-12 pl-10'>
                         <div id='leftContainer' className='w-3/5 h-full float-left flex flex-col gap-16'>
                             <FeedbackInbox />
     

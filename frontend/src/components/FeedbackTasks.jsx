@@ -42,9 +42,9 @@ const FeedbackTasks = () => {
 
 const checkMentor = () => {
     if(userInfo.isMentor === '0'){
-        return(<p>Here are the tasks that your mentore can give you feedback on</p>)
+        return(<p>Here are the tasks that your mentor can give you feedback on</p>)
     }else{
-        return(<p>Your Mentee has completed tasks! click one to give them feedback</p>)
+        return(<p>Your Mentee has completed tasks! Click one to give them feedback</p>)
     }
 }
 
@@ -54,11 +54,11 @@ const checkMentor = () => {
 
     return (
         < div id='tasksContainer' className='w-full flex-left border-3 border-violet-400 rounded-lg px-8 py-8 shadow-xl flex flex-col gap-5 bg-white' >
-            <div>
+            <div className='text-violet-600 font-bold text-2xl'>
                 {checkMentor()}
             </div>
             <div>
-                {completedTasks.map((t) => (<button onClick={() => { setButtonPopup(true); setCurrentTask(t.task)}} className=' block w-full mt-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-300 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0 '>Mentee Task: {t.task}</button>))}
+                {completedTasks.map((t) => (<button onClick={() => { setButtonPopup(true); setCurrentTask(t.task)}} className=' block w-full mt-2 border-2 border-gray-200 rounded-md py-1 px-2 shadow-md hover:bg-violet-400 hover:border-violet-400 hover:text-violet-900 ease-out duration-300 hover:decoration-0 text-left'>Mentee Task: {t.task}</button>))}
                 <FeedbackForm trigger={buttonPopup} setTrigger={setButtonPopup} task={currentTask}/>
             </div>
         </div >
