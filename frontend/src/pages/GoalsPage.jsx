@@ -26,7 +26,7 @@ const GoalsPage = () => {
   // progress bar variables
   let total = completedGoals.length + incompleteGoals.length;
   let numOfCompletedGoals = completedGoals.length;
-  let totalPercent = (numOfCompletedGoals / total) * 100 + '%';
+  let totalPercent = Math.floor((numOfCompletedGoals / total) * 100) + '%';
 
 
   useEffect(() => {
