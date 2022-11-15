@@ -115,6 +115,18 @@ const completeTasks = (taskId) => {
 
 }
 
+const addFeedback = (obj) => {
+    console.log('adding feedback in db')
+    return new Promise((resolve, reject) => {
+        pool.query("INSERT INTO feedback (subjectLine, feedback, seen, dashboardKey, feedbackTask) VALUES (?, ?, ?, ?, ?)", [obj.subjectLine, obj.feedback, obj.seen, obj.dashboardKey, obj.feedbackTask], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+
+}
 
 
 
@@ -158,6 +170,8 @@ const getGoalCount = (dashboardKey) => {
 }
 
 
+
+
 // const updateGoal = (dashboardKey) => {
 //     console.log('Updating goal...');
 //     return new Promise((resolve, reject) => {
@@ -165,4 +179,4 @@ const getGoalCount = (dashboardKey) => {
 //     })
 // }
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount, completeTasks}
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount, completeTasks, addFeedback}

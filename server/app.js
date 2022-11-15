@@ -10,6 +10,7 @@ var testAPIRouter = require("./routes/testAPI");
 var googleAPIRouter = require("./routes/googleAPI");
 var tasksAPIRouter = require("./routes/tasks");
 var goalsAPIRouter = require('./routes/goals');
+var feedbackAPIRouter = require('./routes/feedback')
 var app = express();
 
 // view engine setup
@@ -29,6 +30,7 @@ app.use('/testAPI', testAPIRouter);
 app.use('/googleAPI', googleAPIRouter);
 app.use('/tasks', tasksAPIRouter);
 app.use('/goals', goalsAPIRouter);
+app.use('/feedback', feedbackAPIRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
