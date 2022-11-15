@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Sidebar, GoalForm, EditGoalForm } from '../components';
 import { HiPlus } from 'react-icons/hi';
-import { FaEdit } from 'react-icons/fa';
-import { Progress, ButtonGroup, Button } from 'rsuite';
 import axios from 'axios';
 
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -12,12 +10,9 @@ import 'react-circular-progressbar/dist/styles.css';
 const GoalsPage = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('user_info'));
 
-  // progress bar variables 
-  const [percent, setPercent] = useState();
+  // popup 
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [editGoal, setEditGoal] = useState(false);
-  const status = percent === 100 ? "success" : null;
-  const color = percent === 100 ? "#03D613" : "#771be7";
+
 
   // goal list variables 
   const [goalList, setGoalList] = useState([]);
@@ -25,24 +20,14 @@ const GoalsPage = () => {
   const [incompleteGoals, setIncompleteGoals] = useState([]);
   const [isGoalSelected, setIsGoalSelected] = useState(false);
   const [currentGoal, setCurrentGoal] = useState({});
-  const [getGoalCount, setGetGoalCount] = useState();
 
   var userGoals;
-  var goalCount;
 
-  const progressTotal = getGoalCount;
-  
-  const decrease = () => {
-    const value =
-        Math.max(percent - 1, 0);
-    setPercent(value);
-};
+  // progress bar variables
+  let total = completedGoals.length + incompleteGoals.length;
+  let numOfCompletedGoals = completedGoals.length;
+  let totalPercent = (numOfCompletedGoals / total) * 100 + '%';
 
-  const increase = () => {
-      const value =
-          Math.min(percent + 1, 100);
-      setPercent(value);
-  };
 
   useEffect(() => {
     if(sessionStorage.length >= 1){
@@ -59,27 +44,6 @@ const GoalsPage = () => {
       }).catch((error) => console.log(error.message));
     }
   }, []);
-
-  useEffect(() => {
-    if(sessionStorage.length >= 1){
-      axios.post('http://localhost:9000/goals/get-goalCount', userInfo).then(response => {
-        console.log(response.data);
-        sessionStorage.setItem("goal_count", JSON.stringify(response.data));
-
-        goalCount = JSON.parse(sessionStorage.getItem("goal_count"));
-
-        setGetGoalCount(goalCount);
-
-        // setPercent(goalCount);
-        console.log("percent" + goalCount)
-
-      })
-    }
-  }, []);
-
-  let total = completedGoals.length + incompleteGoals.length;
-  let numOfCompletedGoals = completedGoals.length;
-  let totalPercent = (numOfCompletedGoals / total) * 100 + '%';
 
 
   const Goals = () => {
@@ -119,9 +83,7 @@ const GoalsPage = () => {
               </div>
 
               <div id='completeGoalBtn' className='block text-center'>
-                <ButtonGroup>
-                  <Button onClick={() => {completeGoal(currentGoal); increase()}} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</Button>
-                </ButtonGroup>
+                  <button onClick={() => {completeGoal(currentGoal)}} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</button>
               </div>
           </div>
         ))}
