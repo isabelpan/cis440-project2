@@ -4,16 +4,24 @@ import { FaShareSquare } from 'react-icons/fa';
 import DashboardKeyModal from '../components/DashboardKeyModal';
 import axios from 'axios';
 import TasksSummary from '../components/TasksSummary';
+import GoalsSummary from '../components/GoalsSummary';
+import { Progress, ButtonGroup, Button } from 'rsuite';
+
+
+
 
 
 const Dashboard = () => {
 
-  const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
-
-
-
-
   const [buttonPopup, setButtonPopup] = useState(false);
+
+
+    const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
+
+
+
+
+
 
   var date = new Date();
   const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -55,14 +63,18 @@ const Dashboard = () => {
             <DashboardKeyModal trigger={buttonPopup} setTrigger={setButtonPopup}/>          </div>
          </div>
 
-          <div id='containerContainer' className='flex flex-row'>
+
+
+          <div id='containerContainer' className='flex flex-row h-full'>
             <div id='tasksContainer' className='text-gray-400 w-7/12 flex px-4 border-3 border-violet-400 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white mx-2'>
               <TasksSummary/>
             </div>
             
             <div className='text-gray-400 w-5/12 flex px-4 border-3 border-violet-100 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white'>
-              <div className='text-gray-400 w-fill flex px-4 border-3 border-violet-300 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white h-3/4 text-wrap'>
-                  <p>Goals Progress Bar</p>
+              <div className='content-center text-gray-400 w-fill flex px-4 border-3 border-violet-300 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white h-3/4 text-wrap'>
+
+                <GoalsSummary/>
+
               </div>
               <div className='text-gray-400 w-fill flex px-4 border-3 border-violet-300 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white h-1/4'>
                   <p>how many unread messages</p>
