@@ -5,6 +5,7 @@ import DashboardKeyModal from '../components/DashboardKeyModal';
 import axios from 'axios';
 import TasksSummary from '../components/TasksSummary';
 import GoalsSummary from '../components/GoalsSummary';
+import FeedbackSummary from '../components/FeedbackSummary';
 import { Progress, ButtonGroup, Button } from 'rsuite';
 
 
@@ -77,7 +78,7 @@ const Dashboard = () => {
 
               </div>
               <div className='text-gray-400 w-fill flex px-4 border-3 border-violet-300 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white h-1/4'>
-                  <p>how many unread messages</p>
+                  <FeedbackSummary/>
               </div>
 
             </div>

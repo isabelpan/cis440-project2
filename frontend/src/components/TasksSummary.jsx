@@ -12,6 +12,7 @@ const TasksSummary = () => {
 
     const [upcomingTasks, setUpcomingTasks] = useState([]);
     const [highPriorityTasks, setHighPriorityTasks] = useState([]);
+    var incompleteTasks
 
     var date = new Date();
     const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
@@ -25,9 +26,10 @@ const TasksSummary = () => {
             console.log('axiosing on me')
             sessionStorage.setItem("user_tasks", JSON.stringify(response.data))
             userTasks = JSON.parse(sessionStorage.getItem('user_tasks'))
+            incompleteTasks = userTasks.filter((t) => t['completed'] == 0)
 
-            setHighPriorityTasks(userTasks.filter((t) => t['priority'] === 'High'))
-            setUpcomingTasks(upcomingTasksFilter(userTasks))
+            setHighPriorityTasks(incompleteTasks.filter((t) => t['priority'] === 'High'))
+            setUpcomingTasks(upcomingTasksFilter(incompleteTasks))
             
         }).catch(error => console.log(error.message))
     }}, [])
