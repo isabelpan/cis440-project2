@@ -9,13 +9,13 @@ router.post('/add-goal', async (req, res) => {
 });
 
 router.post('/get-goals', async (req, res) => {
-    console.log("Getting goals...");
+    console.log("Getting goals");
     console.log(req.body);
     console.log(req.body.dashboardKey);
     let goals = await getGoals(req.body.dashboardKey);
     console.log(goals);
     res.send(goals);
-})
+});
 
 
-module.exports = router
+module.exports = router;

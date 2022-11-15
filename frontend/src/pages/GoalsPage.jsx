@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Sidebar, Goals, GoalForm, EditGoalForm } from '../components';
+import { Navbar, Sidebar, GoalForm, EditGoalForm } from '../components';
 import { HiPlus } from 'react-icons/hi';
 import { FaEdit } from 'react-icons/fa';
 import { Progress, ButtonGroup, Button } from 'rsuite';
@@ -9,18 +9,23 @@ import axios from 'axios';
 const GoalsPage = () => {
   const userInfo = JSON.parse(localStorage.getItem('user_info'));
 
+  // progress bar variables 
   const [percent, setPercent] = useState(50);
   const [buttonPopup, setButtonPopup] = useState(false);
   const [editGoal, setEditGoal] = useState(false);
-
-  const [goalList, setGoalList] = useState([]);
-  const [completedGoals, setCompletedGoals] = useState([]);
-  const [incompleteGoals, setIncompleteGoals] = useState([]);
-
   const status = percent === 100 ? "success" : null;
   const color = percent === 100 ? "#03D613" : "#771be7";
 
+  // goal list variables 
+  const [goalList, setGoalList] = useState([]);
+  const [completedGoals, setCompletedGoals] = useState([]);
+  const [incompleteGoals, setIncompleteGoals] = useState([]);
+  const [isGoalSelected, setIsGoalSelected] = useState(false);
+  const [currentGoal, setCurrentGoal] = useState({});
+
   var userGoals;
+
+
   
   const decrease = () => {
     const value =
@@ -51,6 +56,43 @@ const GoalsPage = () => {
   }, []);
 
 
+  const Goals = () => {
+    return(
+          <div className='flex flex-col gap-3 w-1/5 border-2 border-violet-700 rounded-lg p-4 hover:scale-105 ease-in-out duration-300 max-w-screen-sm'>
+            <div>
+              <div>
+                <div className='border-b-1 border-gray-300 flex flex-row w-full items-center'>
+                  <div className='text-2xl text-violet-800 font-bold flex w-1/2'>
+                    <h1>TITLE</h1>
+                  </div>
+
+                  <div className='text-gray-400 w-1/2 gap-1 text-sm'>
+                    <button onClick={() => {setCurrentGoal(); setIsGoalSelected(true)}}>  
+                        <FaEdit />
+                  </button>
+                  
+                  </div>          
+                </div>
+              </div>
+              
+              <div className='text-lg'>
+                  {incompleteGoals.goalDescription}
+              </div>
+
+              <div className='flex justify-around'>
+                <ButtonGroup>
+                  <Button onClick={increase} className='pt-3 ease-out duration-300 text-violet-800 hover:text-violet-600 text-lg'>Goal Completed</Button>
+                </ButtonGroup>
+              </div>
+
+          </div>
+
+        </div>
+
+    )
+  }
+
+
   return (
     <div>
       <div>
@@ -71,8 +113,7 @@ const GoalsPage = () => {
             <div className='text-violet-600 font-bold text-3xl'>
               <h1>Current Goals</h1>
             </div>
-          
-
+        
             <div className='flex flex-row text-violet-600 ease-out duration-300 hover:text-violet-900 text-xl gap-1'>
               <HiPlus className='mt-1'/>
               <button onClick={() => { setButtonPopup(true)}} type='button'>New Goal</button>
@@ -95,10 +136,10 @@ const GoalsPage = () => {
 
             <div id='accomplishedGoalsList' className='w-full flex flex-col gap-2'>
 
-            {completedGoals.map((data) => {
+            {completedGoals.map((goal) => {
                   return (
                     <div className='border-2 py-1 px-2 rounded-md bg-violet-100 flex flex-row justify-between'>
-                      <h1>Goal Title</h1>
+                      <h1>{completedGoals.goalTitle}</h1>
                       <button onClick={() => {setEditGoal(true)}}>
                         <FaEdit className='text-gray-500' />
                       </button>
@@ -122,14 +163,6 @@ const GoalsPage = () => {
             </div>
 
             <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-md border-violet-800' >
-
-                {/* <ButtonGroup className='flex flex-row gap-3' >
-                  <Button onClick={decrease} className="border-2 border-violet-200 rounded-md px-5">-</Button>
-                  <Button onClick={increase} className="border-2 border-violet-200 rounded-md px-5">+</Button>
-                </ButtonGroup> */}
-
-
-                
                 <Progress.Circle percent={percent} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/>
   
 

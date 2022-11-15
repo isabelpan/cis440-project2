@@ -115,7 +115,7 @@ const addGoal = (goalData) => {
 }
 
 const getGoals = (dashboardKey) => {
-    console.log('Getting goals...');
+    console.log('Getting goals...')
     return new Promise((resolve, reject) => {
         pool.query("SELECT * FROM goal WHERE dashboardKey = ?", [dashboardKey], (err, results) => {
             if(err){
