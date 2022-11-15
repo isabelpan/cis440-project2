@@ -7,7 +7,6 @@ const FeedbackPage = () => {
 
     const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
     
-    if (userInfo.isMentor === '1'){
         return (
             <div>
                 <div>
@@ -20,7 +19,7 @@ const FeedbackPage = () => {
                     </div>
     
     
-                    <div className='w-10/12 float-right h-full py-14 pl-10'>
+                    <div className='w-10/12 float-right h-full py-3 pl-10'>
                         <div id='leftContainer' className='w-3/5 h-full float-left flex flex-col gap-16'>
                             <FeedbackInbox />
     
@@ -31,10 +30,16 @@ const FeedbackPage = () => {
     
                         </div>
                     </div>
+                    <div className='w-10/12 float-right h-full py-3 pl-10 '>
+                        <div className='w-1/3 h-full float-right rounded-lg mr-10 flex flex-col gap-10'>
+
+                        <FeedbackTools/>
+                        </div>
+                    </div>
                 </div >
             </div >
         )
     }
-    }
+    
 
 export default FeedbackPage;

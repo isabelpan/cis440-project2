@@ -128,6 +128,33 @@ const addFeedback = (obj) => {
 
 }
 
+const getFeedback = (dashboardKey) => {
+    console.log('getting tasks')
+    return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM feedback WHERE dashboardKey = ?", [dashboardKey], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+}
+
+
+
+const markSeen = (feedbackId) => {
+    console.log('completing tasks in db')
+    return new Promise((resolve, reject) => {
+        pool.query("UPDATE feedback SET seen = 1 WHERE feedbackId = ?", [feedbackId], (err, results) => {
+            if(err){
+                return reject(err)
+            }
+            return resolve(results)
+        })
+    })
+
+}
+
 
 
 
@@ -197,4 +224,4 @@ const completeGoal = (goalId) => {
 //     })
 // }
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount, completeTasks, addFeedback, completeGoal}
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount, completeTasks, addFeedback, completeGoal, getFeedback, markSeen}
