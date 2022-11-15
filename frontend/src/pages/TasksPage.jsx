@@ -100,7 +100,7 @@ const TasksPage = () => {
         
       <div>
         {incompleteTasks.map((task) => (
-          <button className=' block w-full mt-2 border-2 border-gray-200 rounded-md py-1 px-3 shadow-md hover:bg-violet-400 hover:text-violet-900 hover:shadow-lg hover:border-violet-400 ease-out duration-300 hover:decoration-0 text-left' onClick={() => {setCurrentTask(task); setIsTaskSelected(true)}}><p>{task['task']}</p></button>
+          <button className=' block w-full mt-2 border-2 border-violet-300 rounded-md py-1 px-3 shadow-md hover:bg-violet-400 hover:text-violet-900 hover:shadow-lg hover:border-violet-400 ease-out duration-300 hover:decoration-0 text-left' onClick={() => {setCurrentTask(task); setIsTaskSelected(true)}}><p>{task['task']}</p></button>
         ))} 
       </div> 
       </div>
