@@ -88,14 +88,19 @@ const TasksPage = () => {
   const TaskListView = (t) =>{
     return(
 
-      <div>
-        <div className={taskHeader}>
+      <div className='flex flex-col gap-2'>
+        <div className='flex flex-row justify-between items-center'>
+          <div className={taskHeader}>
                 <h1>Current Tasks</h1>
-                <button onClick={() => toggleSort()}>sort by: {sortBy}</button>
+          </div>
+          <div>
+          <button className='text-gray-500' onClick={() => toggleSort()}>Sort By: <span className='underline'>{sortBy}</span></button>
+          </div>
         </div>
+        
       <div>
         {incompleteTasks.map((task) => (
-          <button className=' block w-full mt-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-300 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0 ' onClick={() => {setCurrentTask(task); setIsTaskSelected(true)}}><p>{task['task']}</p></button>
+          <button className=' block w-full mt-2 border-2 border-gray-200 rounded-md py-1 px-3 shadow-md hover:bg-violet-400 hover:text-violet-900 hover:shadow-lg hover:border-violet-400 ease-out duration-300 hover:decoration-0 text-left' onClick={() => {setCurrentTask(task); setIsTaskSelected(true)}}><p>{task['task']}</p></button>
         ))} 
       </div> 
       </div>
