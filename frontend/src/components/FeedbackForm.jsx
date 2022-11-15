@@ -39,7 +39,7 @@ const FeedbackForm = (props) => {
     <div id='popup' className='w-full fixed top-0 left-0 h-screen bg-gray-500/75 flex justify-center items-center text-violet-600'>
       <div id='popupInner' className='relative p-8 w-full max-w-screen-sm bg-white rounded-lg  flex flex-col gap-6'>
         <div className='font-bold text-3xl'>
-          <h1>New Goal</h1>
+          <h1>New Feedback</h1>
         </div>
 
         <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
