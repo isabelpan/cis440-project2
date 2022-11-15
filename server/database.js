@@ -129,7 +129,7 @@ const getGoals = (dashboardKey) => {
 const getGoalCount = (dashboardKey) => {
     console.log("Counting goals...")
     return new Promise((resolve, reject) => {
-        pool.query("SELECT *; COUNT (dashboardKey) FROM goal WHERE dashboardKey = ?", 
+        pool.query("SELECT COUNT (*) as GoalCount FROM goal WHERE dashboardKey = ?", 
             [dashboardKey], (err, results) => {
                 if(err) {
                     return reject(err) 
@@ -147,4 +147,4 @@ const getGoalCount = (dashboardKey) => {
 //     })
 // }
 
-module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals}
+module.exports = { getUser, createDashboard, createUser, updateDashboard, createTask, getTasks, addGoal, getGoals, getGoalCount}

@@ -22,8 +22,10 @@ const GoalsPage = () => {
   const [incompleteGoals, setIncompleteGoals] = useState([]);
   const [isGoalSelected, setIsGoalSelected] = useState(false);
   const [currentGoal, setCurrentGoal] = useState({});
+  const [getGoalCount, setGetGoalCount] = useState();
 
   var userGoals;
+  var goalCount;
 
   
   const decrease = () => {
@@ -48,9 +50,25 @@ const GoalsPage = () => {
 
         setGoalList(userGoals);
 
-        setCompletedGoals(userGoals.filter((g) => g['completed'] === 1));
-        setIncompleteGoals(userGoals.filter((g) => g['completed'] === 0))
+        setCompletedGoals(userGoals.filter((g) => g['completed'] === '1'));
+        setIncompleteGoals(userGoals.filter((g) => g['completed'] === '0'))
       }).catch((error) => console.log(error.message));
+    }
+  }, []);
+
+  useEffect(() => {
+    if(sessionStorage.length >= 1){
+      axios.post('http://localhost:9000/goals/get-goalCount', userInfo).then(response => {
+        console.log(response.data);
+        sessionStorage.setItem("goal_count", JSON.stringify(response.data));
+
+        goalCount = JSON.parse(sessionStorage.getItem("goal_count"));
+
+        setGoalList(userGoals);
+
+        setGetGoalCount(goalCount);
+
+      })
     }
   }, []);
 
