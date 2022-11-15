@@ -1,5 +1,7 @@
 import React from 'react';
 import { Navbar, Sidebar } from '../components';
+import Calendar from '@toast-ui/react-calendar';
+import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 
 const CalendarPage = () => {
   var date = new Date();
@@ -27,7 +29,8 @@ const CalendarPage = () => {
           </div>
 
           <div>
-            Calendar Component
+            <Calendar 
+              view='month'/>
           </div>
 
         </div>      

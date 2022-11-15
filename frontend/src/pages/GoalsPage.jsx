@@ -180,6 +180,8 @@ const GoalsPage = () => {
 
             <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-md border-violet-800' >
                 <Progress.Circle percent={percent} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/>
+
+                
   
 
             </div>
