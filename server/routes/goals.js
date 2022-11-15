@@ -26,5 +26,14 @@ router.post('/get-goalCount', async (req, res) => {
     res.send(count);
 })
 
+// router.post('/update-goal', async (req, res) => {
+//     console.log("Updating Goal");
+//     console.log(req.body);
+//     let updatedGoal = await updateGoal(req.body.dashboardKey);
+//     console.log(updatedGoal);
+//     res.send(updatedGoal);
+
+// })
+
 
 module.exports = router;

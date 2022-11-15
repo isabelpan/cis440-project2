@@ -140,10 +140,15 @@ const getGoalCount = (dashboardKey) => {
 }
 
 
-// const updateGoal = (dashboardKey) => {
+// const updateGoal = (dashboardKey, goalData) => {
 //     console.log('Updating goal...');
 //     return new Promise((resolve, reject) => {
-//         pool.query("UPDATE")
+//         pool.query("UPDATE goal SET goalTitle = ?, goalDescription = ?, WHERE dashboardKey = ?", [goalData.goalTitle, goalData.goalDescription, dashboardKey], (err, results) => {
+//             if(err) {
+//                 return reject(err)
+//             }
+//             return resolve(results)
+//         })
 //     })
 // }
 
