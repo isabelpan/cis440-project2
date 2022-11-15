@@ -5,12 +5,15 @@ import { FaEdit } from 'react-icons/fa';
 import { Progress, ButtonGroup, Button } from 'rsuite';
 import axios from 'axios';
 
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 
 const GoalsPage = () => {
   const userInfo = JSON.parse(sessionStorage.getItem('user_info'));
 
   // progress bar variables 
-  const [percent, setPercent] = useState(50);
+  const [percent, setPercent] = useState();
   const [buttonPopup, setButtonPopup] = useState(false);
   const [editGoal, setEditGoal] = useState(false);
   const status = percent === 100 ? "success" : null;
@@ -67,9 +70,16 @@ const GoalsPage = () => {
 
         setGetGoalCount(goalCount);
 
+        // setPercent(goalCount);
+        console.log("percent" + goalCount)
+
       })
     }
   }, []);
+
+  const total = completedGoals.length + incompleteGoals.length;
+  const numOfCompletedGoals = completedGoals.length;
+
 
   const Goals = () => {
 
@@ -79,6 +89,8 @@ const GoalsPage = () => {
       axios.post('http://localhost:9000/goals/complete-goal', goal).then(response => {
         console.log(response.data);
       }).catch(error => console.log(error.message));
+
+
     }
 
 
@@ -183,11 +195,19 @@ const GoalsPage = () => {
               <h1>Your Progress</h1>
             </div>
 
-            <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-md border-violet-800' >
+            <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-md border-violet-800 w-1/2 m-auto p-5' >
 
-              <h1></h1>
-                <Progress.Circle percent={percent} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/>
+              <h1>{goalCount}</h1>
+                {/* <Progress.Circle percent={percent} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/> */}
 
+                <CircularProgressbar maxValue={total} minValue={0} value={numOfCompletedGoals} styles={{trail:{
+                  stroke: '#b5b5b549',
+                  strokeLinecap: 'butt',
+                  transition: 'stroke-dashoffset 0.5s ease 0s',
+                },
+                path:{
+                  stroke: '#771be7'
+                }}}/>
 
   
 

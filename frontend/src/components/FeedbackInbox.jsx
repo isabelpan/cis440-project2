@@ -42,7 +42,7 @@ const FeedbackTab = ({feedback}) => {
                 <div className="border-2 border-gray-200 rounded-md py-1 px-2 bg-grey-100 shadow-md my-2 text-gray-700">
                     <div id="feedback1" className=" flex flex-col px-2 py-2">
                         <div className='flex flex-row gap-2 items-baseline text-xl'>
-                            <h2 className="font-bold ">Title:</h2> <span>{feedback.feedbackTask}</span>
+                            <h2 className="font-bold ">Task Title:</h2> <span>{feedback.feedbackTask}</span>
                         </div>
                         
                         <p className="font-bold text-sm">Subj: {feedback.subjectLine}</p>
