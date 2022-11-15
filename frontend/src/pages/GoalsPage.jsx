@@ -77,8 +77,9 @@ const GoalsPage = () => {
     }
   }, []);
 
-  const total = completedGoals.length + incompleteGoals.length;
-  const numOfCompletedGoals = completedGoals.length;
+  let total = completedGoals.length + incompleteGoals.length;
+  let numOfCompletedGoals = completedGoals.length;
+  let totalPercent = (numOfCompletedGoals / total) * 100 + '%';
 
 
   const Goals = () => {
@@ -166,7 +167,7 @@ const GoalsPage = () => {
 
         <div className='flex flex-row mt-10 w-full justify-between gap-20 h-1/2'>
 
-          <div id='accomplishedGoalsContainer' className='w-1/2 flex flex-col gap-6 border-3 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
+          <div id='accomplishedGoalsContainer' className='w-1/2 flex flex-col gap-8 border-3 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
             <div className='text-violet-600 text-3xl font-bold'>
               <h1>Goals You Have Accomplished</h1>
             </div>
@@ -175,7 +176,7 @@ const GoalsPage = () => {
 
             {completedGoals.map((goal) => {
                   return (
-                    <div className='border-2 py-1 px-2 rounded-md bg-violet-100 flex flex-row justify-between text-violet-400 line-through'>
+                    <div className='border-2 py-2 px-2 rounded-md bg-violet-100 flex flex-row justify-between text-violet-400 line-through'>
                       <h1 className='capitalize'>{goal['goalTitle']}</h1>
 
                     </div>
@@ -186,32 +187,44 @@ const GoalsPage = () => {
             </div>
 
             <div>
-              <button className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-2'>Clear Accomplished Goals</button>
+              <button className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-3'>Clear Accomplished Goals</button>
             </div>
           </div>
 
           <div id='progressContainer' className='w-1/2 flex flex-col gap-6 border-3 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
-            <div className='text-violet-600 text-3xl font-bold'>
-              <h1>Your Progress</h1>
+            <div>
+              <div className='text-violet-600 text-3xl font-bold'>
+                <h1>Your Progress</h1>
+              </div>
+
+              <div className='text-gray-500'>
+                <h1>You have completed {numOfCompletedGoals} out of {total} goals</h1>
+              </div>
             </div>
+            
 
-            <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-md border-violet-800 w-1/2 m-auto p-5' >
-
-              <h1>{goalCount}</h1>
-                {/* <Progress.Circle percent={percent} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/> */}
-
-                <CircularProgressbar maxValue={total} minValue={0} value={numOfCompletedGoals} styles={{trail:{
+            <div>
+              <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-lg border-violet-600 w-1/2 m-auto p-5' >
+                <CircularProgressbar 
+                  maxValue={total} 
+                  minValue={0} 
+                  value={numOfCompletedGoals} 
+                  text={totalPercent}
+                  styles={{trail:{
                   stroke: '#b5b5b549',
                   strokeLinecap: 'butt',
                   transition: 'stroke-dashoffset 0.5s ease 0s',
                 },
                 path:{
                   stroke: '#771be7'
+                },
+                text:{
+                  fill: '#771be7'
                 }}}/>
-
-  
-
             </div>
+            </div>
+
+            
           </div>
 
         </div>
