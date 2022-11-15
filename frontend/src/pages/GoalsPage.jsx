@@ -92,12 +92,12 @@ const GoalsPage = () => {
                     <h1 className='capitalize'>{goal['goalTitle']}</h1>
                   </div>
 
-                  <div className='flex flex-row ease-out duration-300'>
+                  {/* <div className='flex flex-row ease-out duration-300'>
                     <button type='button' onClick={() => {setEditGoal(true); setCurrentGoal(goal)}}>
                         <FaEdit className='text-gray-500' />
                     </button>
                     <EditGoalForm trigger={editGoal} setTrigger={setEditGoal} />
-                    </div>
+                    </div> */}
                 </div>
               </div>
               
