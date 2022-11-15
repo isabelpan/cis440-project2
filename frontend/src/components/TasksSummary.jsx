@@ -53,17 +53,17 @@ const TasksSummary = () => {
       }
 
     return(
-        <div className='p-2'>
+        <div className='p-2 flex flex-col gap-2'>
             <div >
-                <p className='font-bold text-2xl text-violet-600 text-center'>Tasks summary</p>
+                <p className='font-bold text-3xl text-violet-600 text-center'>Tasks summary</p>
             </div>
-            <div className='flex flex-row gap-6 w-full text-center justify-center'>
+            <div className='flex flex-row gap-6 w-full text-center justify-between text-violet-400 text-xl px-10'>
                 <div className='pr-1'>
-                    <p className='font-bold text-1xl text-violet-600'>This Weeks Tasks</p>
+                    <p>This Week's Tasks</p>
                     {upcomingTasks.map((t) => (<p className='text-left ml-2'>●{t.task}</p>))}
                 </div>
                 <div className='pl-1'>
-                <p className='font-bold text-1xl text-violet-600'>High Priority Tasks</p>
+                <p>High Priority Tasks</p>
                     {highPriorityTasks.map((t) => (<p className='text-left ml-2'>●{t.task}</p>))}
                 </div>
             </div>
