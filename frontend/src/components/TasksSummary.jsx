@@ -9,8 +9,6 @@ const TasksSummary = () => {
 
     const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
     var userTasks
-    var uTasks
-    var hpTasks
 
     const [upcomingTasks, setUpcomingTasks] = useState([]);
     const [highPriorityTasks, setHighPriorityTasks] = useState([]);
