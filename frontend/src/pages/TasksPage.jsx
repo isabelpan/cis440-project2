@@ -43,6 +43,8 @@ const TasksPage = () => {
 
 
 
+
+
   const checkView = (task={}) => {
     if(isTaskSelected){
       return(<TaskSelectedView/>)
@@ -76,7 +78,7 @@ const TasksPage = () => {
         </div>
       <div className='flex flex-row gap-6 w-full text-center pt-10'>
         <button className='block mb-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-300 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0' onClick={() => {setIsTaskSelected(false)}}>Cancle</button>
-        <button className='block mb-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-300 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0' onClick={() => {completeTask(); setIsTaskSelected(false)}}>Complete Task</button>
+        <button className='block mb-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-300 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0' onClick={() => {completeTask(currentTask); setIsTaskSelected(false)}}>Complete Task</button>
       </div> 
       </div>
     )
@@ -105,13 +107,16 @@ const TasksPage = () => {
   const taskHeader = 'text-3xl text-violet-700 font-bold';
 
 
-  const completeTask = () => {
-      setIncompleteTasks(incompleteTasks.filter((dt) => dt['taskId'] !== currentTask.taskId))
-      setCompletedTasks([...completedTasks, currentTask])
-    }
-  const undoComplete = () => {
-    setIncompleteTasks([...incompleteTasks, currentTask])
-    setCompletedTasks(completedTasks.filter((dt) => dt['taskId'] !== currentTask.taskId))
+  const completeTask = (task) => {
+    console.log('completing tasks')
+    console.log(task)
+
+    axios
+    .post('http://localhost:9000/tasks/complete-tasks', task)
+    .then(response => {
+        console.log('sending completed tasks')
+        console.log(response.data)
+    }).catch(error => console.log(error.message))
 
   }
 
@@ -152,7 +157,6 @@ const TasksPage = () => {
 
   }
 
-  
 
   return (
     <div>
@@ -189,22 +193,16 @@ const TasksPage = () => {
             
             <div id='completedTasksListContainer' className='flex flex-col gap-5 line-through text-violet-300 hover'>
               
-              <div className='border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-100 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0'>
-                <h1>Create resume</h1>
-              </div>
-
-              <div className='border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-100 shadow-md'>
-                <h1>Create linkedin profile</h1>
-              </div>
-              
-              <div className='border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-100 shadow-md'>
-                <h1>Register for web seminar</h1>
-              </div>
+            <div>
+                {completedTasks.map((task) => (
+                  <button className='block mb-2 border-2 border-gray-200 rounded-md py-1 px-2 bg-violet-100 shadow-md hover:bg-white ease-out duration-300 hover:decoration-0 line-through' onClick={() => {setCurrentTask(task);}}><p>{task['task']}</p></button>
+                ))} 
+              </div> 
             </div>
 
             
             <div>
-                <button type='button' className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-2'>Clear Completed Tasks</button>
+                <button type='button' className='border-2 rounded-md py-2 w-full font-semibold bg-white text-violet-500 active:bg-violet-500 active:text-violet-900 active:border-violet-500 ease-out duration-300 hover:bg-violet-700 hover:border-violet-700  hover:scale-105 border-violet-500 shadow-md hover:shadow-lg hover:text-white mt-2'>Send For Feedback</button>
               </div>
             
           </div>
