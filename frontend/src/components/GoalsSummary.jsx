@@ -61,7 +61,7 @@ const GoalsSummary = () => {
 
             <div className='ml-12 flex flex-col gap-5'>
               <div className=' text-xl'>
-                <h1>You have completed <span className='text-violet-600 font-bold'>{totalCompleted}</span> out of <span className='text-violet-600 font-bold'>{total}</span> of your goals so far!</h1>
+                <h1>You have completed <span className='text-violet-700 font-bold'>{totalCompleted}</span> out of <span className='text-violet-700 font-bold'>{total}</span> of your goals so far!</h1>
               </div>
               <div className='text-xl'>
                 <h1>Keep up the hard work!</h1>
