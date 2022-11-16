@@ -98,7 +98,7 @@ const TasksPage = () => {
           </div>
         </div>
         
-      <div>
+      <div className='flex flex-col gap-2'>
         {incompleteTasks.map((task) => (
           <button className=' block w-full mt-2 text-gray-700 border-2 border-violet-300 rounded-md py-2 px-3 shadow-md hover:bg-violet-400 hover:text-violet-900 hover:shadow-lg hover:border-violet-400 ease-out duration-300 hover:decoration-0 text-left' onClick={() => {setCurrentTask(task); setIsTaskSelected(true)}}><p>{task['task']}</p></button>
         ))} 
@@ -191,12 +191,12 @@ const TasksPage = () => {
               </div>
           </div>
 
-          <div id='completedTasksContainer' className='w-full flex flex-col gap-5 border-3 border-violet-400 rounded-lg py-8 px-8 shadow-xl bg-white overflow-auto'>
+          <div id='completedTasksContainer' className='w-full flex flex-col gap-5 border-3 border-violet-400 rounded-lg py-8 px-8 shadow-xl bg-white h-82'>
             <div className={taskHeader}>
               <h1>Completed Tasks</h1>
             </div>
             
-            <div id='completedTasksListContainer' className='flex flex-col gap-2 line-through text-violet-300'>
+            <div id='completedTasksListContainer' className='flex flex-col gap-1 line-through text-violet-300 overflow-auto rounded-lg'>
                 {completedTasks.map((task) => (
                   <button className='block mb-2 border-2 border-gray-200 rounded-md py-2 px-3 bg-violet-100 shadow-md ease-out duration-300 hover:decoration-0 line-through w-full text-left' onClick={() => {setCurrentTask(task);}}><p>{task['task']}</p></button>
                 ))} 

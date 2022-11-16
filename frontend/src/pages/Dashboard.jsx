@@ -93,7 +93,7 @@ const Dashboard = () => {
       <div id='pageContainer' className='w-10/12 float-right py-14 px-10'>
 
         <div className='flex flex-col gap-10'>
-          <div id='dashboardHeaderContainer' className='flex flex-row justify-between border-b-1 pb-2 border-gray-300'>
+          <div id='dashboardHeaderContainer' className='flex flex-row justify-between border-b-1 pb-2 border-gray-]300'>
 
           <div id='welcomeDateContainer' className='gap-1 flex flex-col'> 
             <h1 className='font-bold text-4xl text-violet-700'>Welcome Back {userInfo?.fname}</h1>
@@ -107,12 +107,12 @@ const Dashboard = () => {
 
 
 
-          <div id='containerContainer' className='flex flex-row h-full'>
+          <div id='containerContainer' className='flex flex-row h-full gap-10'>
             <div id='tasksContainer' className='text-gray-400 w-7/12 flex px-4 border-3 border-violet-400 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white mx-2'>
               <TasksSummary/>
             </div>
             
-            <div className='text-gray-400 w-5/12 flex px-4 border-3 border-violet-100 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white'>
+            <div className='text-gray-400 w-5/12 flex px-5 border-3 border-violet-400 rounded-lg py-5 shadow-lg flex-col gap-3 bg-white'>
               <div className='content-center text-gray-400 w-fill flex px-4 border-3 border-violet-300 rounded-lg py-3 shadow-lg flex-col gap-3 bg-white h-3/4 text-wrap'>
 
                 <GoalsSummary/>

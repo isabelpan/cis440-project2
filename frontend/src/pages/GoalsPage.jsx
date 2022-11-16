@@ -146,7 +146,7 @@ const GoalsPage = () => {
             </div>
           </div>
 
-          <div id='progressContainer' className='w-1/2 flex flex-col gap-6 border-3 py-5 px-10 rounded-xl border-violet-300 shadow-lg h-full'>
+          <div id='progressContainer' className='w-1/2 flex flex-col gap-6 border-3 py-5 px-10 rounded-xl border-violet-300 shadow-lg'>
             <div>
               <div className='text-violet-600 text-3xl font-bold'>
                 <h1>Your Progress</h1>
@@ -159,7 +159,7 @@ const GoalsPage = () => {
             
 
             <div>
-              <div id='progressBar' className='flex flex-col gap-4 items-center border-2 py-3 rounded-lg border-violet-600 w-1/2 m-auto p-5' >
+              <div id='progressBar' className='flex flex-col gap-4 items-center py-3 px-5 rounded-lg  w-2/5 m-auto' >
                 <CircularProgressbar 
                   maxValue={total} 
                   minValue={0} 
@@ -174,7 +174,8 @@ const GoalsPage = () => {
                   stroke: '#771be7'
                 },
                 text:{
-                  fill: '#771be7'
+                  fill: '#771be7',
+
                 }}}/>
             </div>
             </div>
