@@ -55,9 +55,9 @@ const TasksSummary = () => {
     return(
         <div className='p-2 flex flex-col gap-2'>
             <div >
-                <p className='font-bold text-3xl text-violet-600 text-center'>Tasks summary</p>
+                <p className='font-bold text-3xl text-violet-600 text-center'>Tasks Summary</p>
             </div>
-            <div className='flex flex-row gap-6 w-full text-center justify-between text-violet-400 text-xl px-10'>
+            <div className='flex flex-row gap-6 w-full text-center justify-between text-violet-500 text-xl px-10'>
                 <div className='pr-1 flex flex-col gap-2'>
                     <p className='font-bold'>This Week's Tasks</p>
                     {upcomingTasks.map((t) => (<p className='text-left ml-2'>● {t.task}</p>))}

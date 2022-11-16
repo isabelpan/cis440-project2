@@ -33,7 +33,7 @@ const FeedbackSummary = () => {
 
     return(
         <div>
-            <p>You have {unreadFeedback.length} unread feedback</p>
+            <p>You have <span className='font-bold text-violet-700'>{unreadFeedback.length}</span> unread feedback</p>
         </div>
     )
 

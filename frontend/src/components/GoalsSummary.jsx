@@ -7,6 +7,10 @@ import { Progress, ButtonGroup, Button } from 'rsuite';
 const GoalsSummary = () => {
 
     const userInfo = JSON.parse(sessionStorage.getItem('user_info'))
+
+    let totalCompleted
+    let total
+
     
     const [percent, setPercent] = useState(0);
     const [goalList, setGoalList] = useState([])
@@ -40,9 +44,11 @@ const GoalsSummary = () => {
         console.log(incompleteGoals)
 
 
-        const total = completedGoals.length + incompleteGoals.length
+        total = completedGoals.length + incompleteGoals.length
         console.log('total')
         console.log(total)
+
+        totalCompleted = completedGoals.length;
 
         return Math.floor((completedGoals.length / total * 100))
 
@@ -50,8 +56,18 @@ const GoalsSummary = () => {
 
 
     return(
-        <div>
-            <Progress.Circle percent={calculatePrecent()} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/3 flex flex-col gap-2 text-violet-800'/>
+        <div className='flex flex-row px-3 py-2'>
+            <Progress.Circle percent={calculatePrecent()} strokeColor={color} status={status} strokeWidth={10} trailColor={'#b5b5b549'} trailWidth={10} showInfo={true} className='w-1/2 flex flex-col gap-2 text-violet-800'/>
+
+            <div className='ml-12 flex flex-col gap-5'>
+              <div className=' text-xl'>
+                <h1>You have completed <span className='text-violet-600 font-bold'>{totalCompleted}</span> out of <span className='text-violet-600 font-bold'>{total}</span> of your goals so far!</h1>
+              </div>
+              <div className='text-xl'>
+                <h1>Keep up the hard work!</h1>
+              </div>
+            </div>
+            
         </div>
     )
 
