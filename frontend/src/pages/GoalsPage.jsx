@@ -127,11 +127,11 @@ const GoalsPage = () => {
               <h1>Goals You Have Accomplished</h1>
             </div>
 
-            <div id='accomplishedGoalsList' className='w-full max-h-44 flex flex-col gap-2 overflow-auto rounded-lg'>
+            <div id='accomplishedGoalsList' className='w-full max-h-44 flex flex-col gap-3 overflow-auto rounded-lg'>
 
             {completedGoals.map((goal) => {
                   return (
-                    <div className='border-2 py-2 px-2 rounded-md bg-violet-100 flex flex-row justify-between text-violet-400 line-through'>
+                    <div className='border-2 py-2 px-2 rounded-md bg-violet-100 flex flex-row justify-between text-violet-400 line-through shadow-md'>
                       <h1 className='capitalize'>{goal['goalTitle']}</h1>
 
                     </div>

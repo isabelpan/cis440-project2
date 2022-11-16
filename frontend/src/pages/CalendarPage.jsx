@@ -64,7 +64,7 @@ const CalendarPage = () => {
       </div>
 
       <div className='w-10/12 float-right h-full py-14 pl-10'>
-        <div>
+        <div className='pr-10'>
           <div className='text-violet-600 font-bold text-4xl border-b-2 pb-2'>
             <h1>{thisMonth}</h1>
           </div>

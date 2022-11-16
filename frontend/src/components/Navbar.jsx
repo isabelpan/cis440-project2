@@ -12,7 +12,7 @@ const LoggedInContainer = ({ username, customFunc }) => {
         <h1 className='font-bold'>{username}</h1>
       </div>
 
-      <button type='button' onClick={customFunc} className='text-right text-gray-400 hover:text-gray-900 ease-out duration-300'>Logout</button>
+      <button type='button' onClick={customFunc} className='text-right text-gray-500 hover:text-gray-900 ease-out duration-300'>Logout</button>
   </div> 
   )
 
