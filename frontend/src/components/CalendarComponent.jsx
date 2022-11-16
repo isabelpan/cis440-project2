@@ -2,20 +2,17 @@ import React from 'react'
 import Calendar from '@toast-ui/react-calendar';
 import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 
-const CalendarComponent = (view) => {
-    var date = new Date();
-    const dateOptions = { month: 'long' };
-
+const CalendarComponent = () => {
   const calendars = [
     {
       id: '0',
-      name: 'Private',
+      name: 'Personal',
       backgroundColor: '#9e5fff',
       borderColor: '#9e5fff',
     },
     {
       id: '1',
-      name: 'Company',
+      name: 'Shared',
       backgroundColor: '#0044ff',
       borderColor: '#1e00ff',
     },
