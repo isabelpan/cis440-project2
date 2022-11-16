@@ -4,10 +4,6 @@ import { GrLinkedin } from 'react-icons/gr';
 import { ImGoogle2, ImProfile } from 'react-icons/im';
 import { MdDashboard, MdFeed } from 'react-icons/md'
 
- 
-const IsMentor = () => {
-
-}
 
 export const links = [
     {
